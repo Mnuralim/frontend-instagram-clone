@@ -1,19 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import { useSession } from "next-auth/react";
-import { KeyedMutator } from "swr";
+import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+import { useSession } from 'next-auth/react';
+import { KeyedMutator } from 'swr';
 
-import { HiOutlineBookmark, HiOutlineDotsVertical } from "react-icons/hi";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { IoChatbubbleOutline } from "react-icons/io5";
-import { LuSendHorizonal } from "react-icons/lu";
-import { BsDot } from "react-icons/bs";
-import { likePost } from "@/utils/fetch";
-import Link from "next/link";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import PreviewProfile from "./PreviewProfile";
-import Avatar from "./Avatar";
-import DateConv from "./DateConv";
+import { HiOutlineBookmark, HiOutlineDotsVertical } from 'react-icons/hi';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { IoChatbubbleOutline } from 'react-icons/io5';
+import { LuSendHorizonal } from 'react-icons/lu';
+import { BsDot } from 'react-icons/bs';
+import { likePost } from '@/utils/fetch';
+import Link from 'next/link';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import PreviewProfile from './PreviewProfile';
+import Avatar from './Avatar';
+import DateConv from './DateConv';
 
 interface Props {
   post: IPost;
@@ -28,7 +28,7 @@ const PostCard = ({ post, mutate }: Props) => {
   const pathName = usePathname();
   const searchParams = useSearchParams();
 
-  const detailPost = searchParams?.get("p");
+  const detailPost = searchParams?.get('p');
 
   const { data: session } = useSession();
   const token = session?.user.token;
@@ -42,7 +42,7 @@ const PostCard = ({ post, mutate }: Props) => {
   useEffect(() => {
     const options = {
       root: null,
-      rootMargin: "0px",
+      rootMargin: '0px',
       threshold: 0.5,
     };
 
@@ -84,7 +84,7 @@ const PostCard = ({ post, mutate }: Props) => {
         mutate();
       }
     } catch (error) {
-      throw new Error("Error");
+      throw new Error('Error');
     }
   };
 
@@ -110,7 +110,7 @@ const PostCard = ({ post, mutate }: Props) => {
           <HiOutlineDotsVertical size="23" />
         </button>
       </div>
-      {post.type === "post" ? (
+      {post.type === 'post' ? (
         <div
           onDoubleClick={handleLikePost}
           className="aspect-square w-full mt-2 md:rounded border border-slate-400 border-opacity-0 md:border-opacity-25"
@@ -127,13 +127,13 @@ const PostCard = ({ post, mutate }: Props) => {
         <div
           onDoubleClick={handleLikePost}
           ref={videoContainerRef}
-          className="mt-2 w-full h-[70vh] relative md:rounded border border-slate-400 border-opacity-0 md:border-opacity-25"
+          className="mt-2 aspect-[3/4] relative md:rounded border border-slate-400 border-opacity-0 md:border-opacity-25"
         >
           <video
             onClick={handleVideoClick}
             ref={vidRef}
             src={post.media}
-            className="object-none h-full w-full object-center md:rounded"
+            className="object-cover md:object-contain h-full w-full object-center md:rounded"
           />
         </div>
       )}
@@ -158,7 +158,7 @@ const PostCard = ({ post, mutate }: Props) => {
         <HiOutlineBookmark size="23" className="text-white" />
       </div>
       <Link href={`${pathName}/?like=${post._id}`} scroll={false} className="text-sm font-semibold px-3 md:px-0">
-        {post.totalLike} {post.totalLike > 1 ? "Likes" : "like"}
+        {post.totalLike} {post.totalLike > 1 ? 'Likes' : 'like'}
       </Link>
       <div className="px-3 md:px-0">
         <div className="relative group inline">
@@ -176,7 +176,7 @@ const PostCard = ({ post, mutate }: Props) => {
         <span className="text-sm font-normal pl-1">{post.caption}</span>
       </div>
       <Link href={`${pathName}/?p=${post._id}`} className="px-3 md:px-0 text-sm text-[#A8A8A8] pt-1">
-        View all {post.totalComment} {post.totalComment > 1 ? "comments" : "comment"}
+        View all {post.totalComment} {post.totalComment > 1 ? 'comments' : 'comment'}
       </Link>
       <div className="flex items-center px-3 md:px-0 pt-2">
         <p className="text-xs text-[#A8A8A8]">
