@@ -80,9 +80,7 @@ const PostCard = ({ post, mutate }: Props) => {
   const handleLikePost = async () => {
     try {
       const response = await likePost(token as string, post._id);
-      if (response?.ok) {
-        mutate();
-      }
+      mutate();
     } catch (error) {
       throw new Error('Error');
     }
