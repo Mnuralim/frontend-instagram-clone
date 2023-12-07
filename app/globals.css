@@ -2,26 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.white-logo {
+  filter: brightness(0) invert(1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.grayish-img {
+  filter: sepia(100%) brightness(80%);
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.animate-slide-right {
+  animation: slide-right 2s infinite;
+}
+
+@keyframes download-progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.download-bar-container {
+  height: 3px;
+  overflow: hidden;
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+.download-bar {
+  height: 100%;
+  background-color: #2196f3; /* Warna biru untuk download bar */
+  animation: download-progress 3s linear infinite;
 }
