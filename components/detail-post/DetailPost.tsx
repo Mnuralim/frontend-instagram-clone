@@ -1,11 +1,11 @@
-import { useComment, usePost } from "@/utils/swr";
-import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect, useRef, useState } from "react";
-import { AiOutlineClose } from "react-icons/ai";
-import { useSession } from "next-auth/react";
-import { KeyedMutator } from "swr";
-import Image from "next/image";
-import { Comment } from "./Comment";
+import { useComment, usePost } from '@/utils/swr';
+import { usePathname, useRouter } from 'next/navigation';
+import React, { useEffect, useRef, useState } from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
+import { useSession } from 'next-auth/react';
+import { KeyedMutator } from 'swr';
+import Image from 'next/image';
+import { Comment } from './Comment';
 
 interface Props {
   postId: string;
@@ -32,10 +32,10 @@ const DetailPost = ({ postId }: Props) => {
   );
 
   useEffect(() => {
-    document.body.classList.add("modal-open");
+    document.body.classList.add('modal-open');
 
     return () => {
-      document.body.classList.remove("modal-open");
+      document.body.classList.remove('modal-open');
     };
   }, []);
 
@@ -57,9 +57,9 @@ const DetailPost = ({ postId }: Props) => {
       <div className="absolute right-4 top-4 hidden md:block">
         <AiOutlineClose onClick={() => router.back()} size="23" color="#fff" className="cursor-pointer" />
       </div>
-      <div className="w-full h-full z-10 cursor-pointer relative grid grid-cols-1 md:p-6 md:max-w-[78%] md:grid-cols-2">
+      <div className="w-full h-full z-10 relative grid grid-cols-1 md:p-6 md:max-w-[78%] md:grid-cols-2">
         <div className={`hidden md:block overflow-hidden bg-black`}>
-          {post.type === "post" && (
+          {post.type === 'post' && (
             <Image
               width={50000}
               height={50000}
@@ -68,7 +68,7 @@ const DetailPost = ({ postId }: Props) => {
               className="object-fill w-full h-full"
             />
           )}
-          {post.type === "reel" && (
+          {post.type === 'reel' && (
             <video
               onClick={handleVideoClick}
               ref={vidRef}
