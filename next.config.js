@@ -8,7 +8,7 @@ const nextConfig = {
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   },
   images: {
-    domains: ["res.cloudinary.com", "ik.imagekit.io", "lh3.googleusercontent.com", "www.pngfind.com"],
+    domains: ['res.cloudinary.com', 'ik.imagekit.io', 'lh3.googleusercontent.com', 'www.pngfind.com'],
   },
 };
 

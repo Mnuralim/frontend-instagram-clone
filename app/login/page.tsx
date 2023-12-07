@@ -1,18 +1,18 @@
-"use client";
-import React, { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+'use client';
+import React, { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import LoginForm from "./components/LoginForm";
-import ButtonLoginGoogle from "./components/ButtonLoginGoogle";
+import LoginForm from './components/LoginForm';
+import ButtonLoginGoogle from './components/ButtonLoginGoogle';
 
 const Login = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
 
@@ -20,19 +20,17 @@ const Login = () => {
     setIsLoading(true);
     e.preventDefault();
     try {
-      const data = await signIn("credentials", {
+      const data = await signIn('credentials', {
         redirect: false,
         email,
         password,
       });
       if (data?.ok) {
         setIsLoading(false);
-        toast.success("Login successfully", {
+        toast.success('Login successfully', {
           position: toast.POSITION.TOP_RIGHT,
         });
-        setInterval(() => {
-          router.push("/");
-        }, 2000);
+        router.push('/');
       } else {
         setIsLoading(false);
         toast.error(data?.error, {
@@ -40,21 +38,32 @@ const Login = () => {
         });
       }
     } catch (error) {
-      throw new Error("error");
+      throw new Error('error');
     }
   };
 
   return (
-    <section className="flex justify-between flex-col items-center w-full mx-auto h-screen md:max-w-[33%]">
+    <section className="flex fixed top-0 left-1/2 transform -translate-x-1/2 justify-between flex-col items-center w-full h-screen md:max-w-[33%]">
       <div className="pt-3"></div>
       <div className="flex flex-col w-5/6 gap-3">
         <center>
-          <Image src={"/image/iglogo.png"} alt="logo" width={10300} height={1000} className="white-logo pt-1 object-fill w-[193px] h-[59px]" />
+          <Image
+            src={'/image/iglogo.png'}
+            alt="logo"
+            width={10300}
+            height={1000}
+            className="white-logo pt-1 object-fill w-[193px] h-[59px]"
+          />
         </center>
-        <LoginForm handleSubmit={handleSubmit} handleChangeValue={{ setEmail, setPassword }} isLoading={isLoading} inputValue={{ email, password }} />
+        <LoginForm
+          handleSubmit={handleSubmit}
+          handleChangeValue={{ setEmail, setPassword }}
+          isLoading={isLoading}
+          inputValue={{ email, password }}
+        />
         <p className="text-sm text-center text-[#A8A8A8]">
-          Forgot your login details?{" "}
-          <Link href={"#"} className="text-slate-300 font-semibold">
+          Forgot your login details?{' '}
+          <Link href={'#'} className="text-slate-300 font-semibold">
             Get help logging in.
           </Link>
         </p>
@@ -67,8 +76,8 @@ const Login = () => {
       </div>
       <div className="pb-3">
         <p className="text-sm text-center text-[#A8A8A8]">
-          Don&apos;t have an account?{" "}
-          <Link href={"/register"} className="text-slate-300 font-semibold">
+          Don&apos;t have an account?{' '}
+          <Link href={'/register'} className="text-slate-300 font-semibold">
             Sign up.
           </Link>
         </p>
