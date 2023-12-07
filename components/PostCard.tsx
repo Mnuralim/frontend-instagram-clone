@@ -29,15 +29,16 @@ const PostCard = ({ post, mutate }: Props) => {
   const searchParams = useSearchParams();
 
   const detailPost = searchParams?.get('p');
+  const createPost = searchParams?.get('create');
 
   const { data: session } = useSession();
   const token = session?.user.token;
 
   useEffect(() => {
-    if (detailPost) {
+    if (detailPost || createPost) {
       vidRef.current?.pause();
     }
-  }, [detailPost]);
+  }, [detailPost, createPost]);
 
   useEffect(() => {
     const options = {
