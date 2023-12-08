@@ -75,7 +75,7 @@ const DetailPost = ({ postId }: Props) => {
               src={post.media}
               autoPlay
               loop
-              className="w-full object-fill"
+              className="w-full object-fill hidden md:block"
             />
           )}
         </div>
