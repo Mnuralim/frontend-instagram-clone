@@ -7,6 +7,8 @@ import HeaderProfile from './components/HeaderProfile';
 import BodyProfile from './components/BodyProfile';
 import { followUser } from '@/utils/fetch';
 import MainPost from './components/MainPost';
+import { useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 
 interface Params {
   params: {
@@ -15,7 +17,14 @@ interface Params {
 }
 
 const Page = ({ params: { userId } }: Params) => {
-  const { data: session } = useSession();
+  const router = useRouter();
+  const { data: session } = useSession({
+    onUnauthenticated: () => {
+      redirect('/login');
+    },
+    required: true,
+  });
+
   const token = session?.user.token;
   const {
     user,
@@ -48,7 +57,7 @@ const Page = ({ params: { userId } }: Params) => {
     }
   };
 
-  if (isLoadingUser || isLoadingPost) return <p>loading</p>;
+  if (isLoadingUser || isLoadingPost || !session) return <p>loading</p>;
 
   return (
     <section className="w-full md:max-w-[67%] mx-auto">
