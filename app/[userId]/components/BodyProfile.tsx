@@ -78,18 +78,22 @@ const BodyProfile = ({ user, userSessionId, handleFollowUser }: Props) => {
           <div className="hidden mt-3 flex-col gap-2 md:flex">
             <h2 className="font-semibold text-sm">{user?.profile.fullName}</h2>
             <p className="text-sm">{user?.profile?.bio}</p>
-            <Link href={`https://${user?.profile?.link}` || '/'} target="_blank" className="text-sm text-[#E0F1FF]">
-              <AiOutlineLink className="inline text-lg" /> {user?.profile?.link}
-            </Link>
+            {user.profile.link && (
+              <Link href={`https://${user?.profile?.link}`} target="_blank" className="text-sm text-[#E0F1FF]">
+                <AiOutlineLink className="inline text-lg" /> {user?.profile?.link}
+              </Link>
+            )}
           </div>
         </div>
       </div>
       <div className="mt-1 px-3 md:hidden">
         <h2 className="font-semibold text-lg">{user?.profile.fullName}</h2>
         <p className="text-sm">{user?.profile?.bio}</p>
-        <Link href={`https://${user?.profile?.link}` || '/'} target="_blank" className="text-sm text-[#E0F1FF]">
-          <AiOutlineLink className="inline text-lg" /> {user?.profile?.link}
-        </Link>
+        {user.profile.link && (
+          <Link href={`https://${user?.profile?.link}`} target="_blank" className="text-sm text-[#E0F1FF]">
+            <AiOutlineLink className="inline text-lg" /> {user?.profile?.link}
+          </Link>
+        )}
       </div>
       {isMyProfile ? (
         <div className="flex items-center gap-1 my-3 px-3 md:hidden">
