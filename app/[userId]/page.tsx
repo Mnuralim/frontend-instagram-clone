@@ -7,7 +7,6 @@ import HeaderProfile from './components/HeaderProfile';
 import BodyProfile from './components/BodyProfile';
 import { followUser } from '@/utils/fetch';
 import MainPost from './components/MainPost';
-import { useRouter } from 'next/navigation';
 import { redirect } from 'next/navigation';
 
 interface Params {
@@ -17,7 +16,6 @@ interface Params {
 }
 
 const Page = ({ params: { userId } }: Params) => {
-  const router = useRouter();
   const { data: session } = useSession({
     onUnauthenticated: () => {
       redirect('/login');
