@@ -34,11 +34,11 @@ const PostCard = ({ post, mutate }: Props) => {
   const { data: session } = useSession();
   const token = session?.user.token;
 
-  // useEffect(() => {
-  //   if (detailPost || createPost) {
-  //     vidRef.current?.pause();
-  //   }
-  // }, [detailPost, createPost]);
+  useEffect(() => {
+    if (detailPost || createPost) {
+      vidRef.current?.pause();
+    }
+  }, [detailPost, createPost]);
 
   useEffect(() => {
     const options = {
