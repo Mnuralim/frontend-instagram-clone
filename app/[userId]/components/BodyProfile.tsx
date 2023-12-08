@@ -85,7 +85,7 @@ const BodyProfile = ({ user, userSessionId, handleFollowUser }: Props) => {
         </div>
       </div>
       <div className="mt-1 px-3 md:hidden">
-        <h2 className="font-semibold text-lg">{user?.username}</h2>
+        <h2 className="font-semibold text-lg">{user?.profile.fullName}</h2>
         <p className="text-sm">{user?.profile?.bio}</p>
         <Link href={user?.profile?.link || '/'} target="_blank" className="text-sm text-[#E0F1FF]">
           <AiOutlineLink className="inline text-lg" /> {user?.profile?.link}
