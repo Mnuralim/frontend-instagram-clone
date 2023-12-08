@@ -48,7 +48,7 @@ const Page = ({ params: { userId } }: Params) => {
     }
   };
 
-  if (isLoadingUser || isLoadingPost || !token) return <p>loading</p>;
+  if (isLoadingUser || isLoadingPost) return <p>loading</p>;
 
   return (
     <section className="w-full md:max-w-[67%] mx-auto">
