@@ -14,13 +14,15 @@ const CommentBar = ({ post, text, setText, handleSubmit }: Props) => {
   const user = session?.user;
   return (
     <div className="fixed  flex justify-between items-center border-slate-50/25 md:left-1/2 bottom-0 gap-3 w-full px-3 py-2 bg-[#262626] md:bottom-6 md:bg-black md:max-w-[37%] md:border-l ">
-      <Image
-        src={user?.image as string}
-        alt={'profile'}
-        width={40}
-        height={40}
-        className="object-cover w-10 h-10 rounded-full"
-      />
+      <div className="aspect-square min-w-[40px]">
+        <Image
+          src={user?.image as string}
+          alt={'profile'}
+          width={4000}
+          height={4000}
+          className="object-cover w-10 h-10 rounded-full"
+        />
+      </div>
       <form onSubmit={handleSubmit} className="w-full flex">
         <div className="w-full">
           <input
