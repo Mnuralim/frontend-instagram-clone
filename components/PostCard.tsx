@@ -34,11 +34,11 @@ const PostCard = ({ post, mutate }: Props) => {
   const { data: session } = useSession();
   const token = session?.user.token;
 
-  useEffect(() => {
-    if (detailPost || createPost) {
-      vidRef.current?.pause();
-    }
-  }, [detailPost, createPost]);
+  // useEffect(() => {
+  //   if (detailPost || createPost) {
+  //     vidRef.current?.pause();
+  //   }
+  // }, [detailPost, createPost]);
 
   useEffect(() => {
     const options = {
@@ -56,13 +56,15 @@ const PostCard = ({ post, mutate }: Props) => {
       }
     }, options);
 
-    if (vidRef.current) {
-      observer.observe(vidRef.current);
+    const currentVideoRef = vidRef.current;
+
+    if (currentVideoRef) {
+      observer.observe(currentVideoRef);
     }
 
     return () => {
-      if (vidRef.current) {
-        observer.unobserve(vidRef.current);
+      if (currentVideoRef) {
+        observer.unobserve(currentVideoRef);
       }
     };
   }, []);
@@ -129,6 +131,7 @@ const PostCard = ({ post, mutate }: Props) => {
           className="mt-2 aspect-[3/4] relative md:rounded border border-slate-400 border-opacity-0 md:border-opacity-25"
         >
           <video
+            loop
             onClick={handleVideoClick}
             ref={vidRef}
             src={post.media}
@@ -174,7 +177,7 @@ const PostCard = ({ post, mutate }: Props) => {
         </div>
         <span className="text-sm font-normal pl-1">{post.caption}</span>
       </div>
-      <Link href={`${pathName}/?p=${post._id}`} className="px-3 md:px-0 text-sm text-[#A8A8A8] pt-1">
+      <Link href={`${pathName}/?p=${post._id}`} scroll={false} className="px-3 md:px-0 text-sm text-[#A8A8A8] pt-1">
         View all {post.totalComment} {post.totalComment > 1 ? 'comments' : 'comment'}
       </Link>
       <div className="flex items-center px-3 md:px-0 pt-2">
