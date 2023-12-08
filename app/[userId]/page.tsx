@@ -1,12 +1,12 @@
-"use client";
-import { usePost, useUser } from "@/utils/swr";
-import { useSession } from "next-auth/react";
-import { KeyedMutator } from "swr";
-import React from "react";
-import HeaderProfile from "./components/HeaderProfile";
-import BodyProfile from "./components/BodyProfile";
-import { followUser } from "@/utils/fetch";
-import MainPost from "./components/MainPost";
+'use client';
+import { usePost, useUser } from '@/utils/swr';
+import { useSession } from 'next-auth/react';
+import { KeyedMutator } from 'swr';
+import React from 'react';
+import HeaderProfile from './components/HeaderProfile';
+import BodyProfile from './components/BodyProfile';
+import { followUser } from '@/utils/fetch';
+import MainPost from './components/MainPost';
 
 interface Params {
   params: {

@@ -78,6 +78,21 @@ export const register = async (email: string, password: string, username: string
   }
 };
 
+export const updateUser = async (token: string, formData: FormData) => {
+  try {
+    const response = await fetch(`${process.env.API_URL}/users`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getAllUsers = async (token: string) => {
   try {
     const response = await fetch(`${process.env.API_URL}/users/`, {
