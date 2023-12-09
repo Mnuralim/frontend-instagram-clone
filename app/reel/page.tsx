@@ -36,7 +36,7 @@ const Page = () => {
         direction={'vertical'}
         modules={[Pagination, Mousewheel]}
         mousewheel={true}
-        className="w-full h-full md:h-[90%]"
+        className="md:w-auto w-full h-full md:max-h-[700px]"
       >
         {posts?.map(
           (post) =>
