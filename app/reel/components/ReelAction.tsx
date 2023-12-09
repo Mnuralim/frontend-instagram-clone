@@ -29,7 +29,7 @@ const ReelAction = ({ post }: Props) => {
     }
   };
   return (
-    <div className="absolute z-20 flex flex-col items-center gap-3 right-3 bottom-[74px] md:bottom-4">
+    <div className="absolute z-20 flex flex-col items-center gap-3 right-3 bottom-[77px] md:bottom-4">
       <button
         onClick={handleLikePost}
         className="flex flex-col items-center cursor-pointer"

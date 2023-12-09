@@ -37,7 +37,7 @@ const ReelDetail = ({ post, isVideoPlaying }: Props) => {
   console.log({ isVideoPlaying });
 
   return (
-    <div className="absolute bottom-[74px] left-3 z-20 text-white flex flex-col gap-2 md:bottom-4 ">
+    <div className="absolute bottom-[77px] left-3 z-20 text-white flex flex-col gap-4 md:bottom-4 ">
       <div className="flex items-center gap-2">
         <Link href={`/${post.userId._id}/?tab=post`}>
           <Image
