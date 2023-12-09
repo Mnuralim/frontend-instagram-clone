@@ -22,11 +22,15 @@ const DetailPost = ({ postId }: Props) => {
     comments,
     isLoading: IsloadingComment,
     mutate,
-  }: { comments: IComment[]; isLoading: boolean; mutate: KeyedMutator<any> } = useComment(
-    session?.user.token as string,
-    postId
-  );
-  const { post, isLoading: isLoadingPost }: { post: IPost; isLoading: boolean; mutate: KeyedMutator<any> } = usePost(
+  }: {
+    comments: IComment[];
+    isLoading: boolean;
+    mutate: KeyedMutator<any>;
+  } = useComment(session?.user.token as string, postId);
+  const {
+    post,
+    isLoading: isLoadingPost,
+  }: { post: IPost; isLoading: boolean; mutate: KeyedMutator<any> } = usePost(
     session?.user.token as string,
     postId
   );
@@ -50,12 +54,18 @@ const DetailPost = ({ postId }: Props) => {
     }
   };
 
-  if (!comments || !post || isLoadingPost || IsloadingComment) return <p>loading...</p>;
+  if (!comments || !post || isLoadingPost || IsloadingComment)
+    return <p>loading...</p>;
 
   return (
     <section className="fixed bg-black inset-0 top-0 left-0 z-50 flex justify-center items-center md:bg-opacity-50">
       <div className="absolute right-4 top-4 hidden md:block">
-        <AiOutlineClose onClick={() => router.back()} size="23" color="#fff" className="cursor-pointer" />
+        <AiOutlineClose
+          onClick={() => router.back()}
+          size="23"
+          color="#fff"
+          className="cursor-pointer"
+        />
       </div>
       <div className="w-full h-full z-10 relative grid grid-cols-1 md:p-6 md:max-w-[78%] md:grid-cols-2">
         <div className={`hidden md:block overflow-hidden bg-black`}>
@@ -73,13 +83,17 @@ const DetailPost = ({ postId }: Props) => {
               onClick={handleVideoClick}
               ref={vidRef}
               src={post.media}
-              autoPlay
               loop
               className="w-full object-fill hidden md:block"
             />
           )}
         </div>
-        <Comment post={post} comments={comments} token={session?.user.token as string} mutate={mutate} />
+        <Comment
+          post={post}
+          comments={comments}
+          token={session?.user.token as string}
+          mutate={mutate}
+        />
       </div>
     </section>
   );
