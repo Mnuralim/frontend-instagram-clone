@@ -15,7 +15,7 @@ const ReelAction = ({ post }: Props) => {
   const router = useRouter();
   const pathName = usePathname();
   return (
-    <div className="absolute z-20 flex flex-col items-center gap-3 right-3 bottom-9 md:bottom-4">
+    <div className="absolute z-20 flex flex-col items-center gap-3 right-3 bottom-16 md:bottom-4">
       <button
         // onClick={handleLike}
         className="flex flex-col items-center cursor-pointer"
