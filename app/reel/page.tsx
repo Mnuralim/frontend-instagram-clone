@@ -20,15 +20,15 @@ const Page = () => {
     session?.user.token as string
   );
 
-  useEffect(() => {
-    if (pathName === '/reel') {
-      document.body.classList.add('overflow-hidden');
-    }
+  // useEffect(() => {
+  //   if (pathName === '/reel') {
+  //     document.body.classList.add('overflow-hidden');
+  //   }
 
-    return () => {
-      document.body.classList.remove('overflow-hidden');
-    };
-  }, [pathName]);
+  //   return () => {
+  //     document.body.classList.remove('overflow-hidden');
+  //   };
+  // }, [pathName]);
 
   return (
     <section className="h-screen items-center flex  min-h-screen md:max-w-[34%] md:mx-auto overflow-y-hidden">
