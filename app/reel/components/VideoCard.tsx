@@ -57,7 +57,7 @@ const VideoCard = ({ post }: Props) => {
         autoPlay
         onClick={handleVideoClick}
         loop
-        className="w-full h-screen object-cover md:rounded"
+        className="w-full h-[95%] object-cover object-center md:rounded"
       />
       <ReelAction post={post} />
     </div>
