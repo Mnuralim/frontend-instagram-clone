@@ -20,23 +20,23 @@ const Page = () => {
     session?.user.token as string
   );
 
-  // useEffect(() => {
-  //   if (pathName === '/reel') {
-  //     document.body.classList.add('overflow-hidden');
-  //   }
+  useEffect(() => {
+    if (pathName === '/reel') {
+      document.body.classList.add('overflow-hidden');
+    }
 
-  //   return () => {
-  //     document.body.classList.remove('overflow-hidden');
-  //   };
-  // }, [pathName]);
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, [pathName]);
 
   return (
-    <section className="h-screen items-center flex  min-h-screen md:max-w-[34%] md:mx-auto overflow-y-hidden">
+    <section className="h-screen items-center flex  min-h-screen md:max-w-[50%] lg:max-w-[34%] md:mx-auto overflow-y-hidden">
       <Swiper
         direction={'vertical'}
         modules={[Pagination, Mousewheel]}
         mousewheel={true}
-        className="md:w-auto w-full h-full md:max-h-[700px]"
+        className="w-full h-full md:h-[90%]"
       >
         {posts?.map(
           (post) =>
