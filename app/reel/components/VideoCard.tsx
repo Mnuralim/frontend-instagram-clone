@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ReelAction from './ReelAction';
+import { useSearchParams } from 'next/navigation';
 
 interface Props {
   post: IPost;
@@ -7,8 +8,17 @@ interface Props {
 
 const VideoCard = ({ post }: Props) => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const searchParams = useSearchParams();
   const vidRef = useRef<HTMLVideoElement>(null);
   const videoContainerRef = useRef<HTMLDivElement>(null);
+
+  const postQueryParams = searchParams?.get('p');
+
+  useEffect(() => {
+    if (postQueryParams) {
+      vidRef.current?.pause();
+    }
+  }, [postQueryParams]);
 
   const handleVideoClick = () => {
     if (vidRef.current) {
@@ -57,7 +67,7 @@ const VideoCard = ({ post }: Props) => {
         autoPlay
         onClick={handleVideoClick}
         loop
-        className="w-full h-[95%] object-cover object-center md:rounded"
+        className="w-full h-[95%] object-cover object-center md:rounded md:h-full"
       />
       <ReelAction post={post} />
     </div>

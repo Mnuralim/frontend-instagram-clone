@@ -1,3 +1,6 @@
+import { likePost } from '@/utils/fetch';
+import { usePost } from '@/utils/swr';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -14,22 +17,31 @@ interface Props {
 const ReelAction = ({ post }: Props) => {
   const router = useRouter();
   const pathName = usePathname();
+  const { data: session } = useSession();
+  const { mutate } = usePost(session?.user.token as string);
+
+  const handleLikePost = async () => {
+    try {
+      const response = await likePost(session?.user.token as string, post._id);
+      mutate();
+    } catch (error) {
+      throw new Error('Error');
+    }
+  };
   return (
-    <div className="absolute z-20 flex flex-col items-center gap-3 right-3 bottom-[70px] md:bottom-4">
+    <div className="absolute z-20 flex flex-col items-center gap-3 right-3 bottom-[74px] md:bottom-4">
       <button
-        // onClick={handleLike}
+        onClick={handleLikePost}
         className="flex flex-col items-center cursor-pointer"
       >
         {post.alreadyLike ? (
           <AiFillHeart
-            // onClick={handleLikePost}
             size="28"
             color="#FF3040"
             className="text-[#FF3040] cursor-pointer"
           />
         ) : (
           <AiOutlineHeart
-            // onClick={handleLikePost}
             size="28"
             className="text-white hover:text-[#A8A8A8] cursor-pointer"
           />
