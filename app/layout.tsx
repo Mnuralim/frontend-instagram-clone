@@ -28,7 +28,7 @@ export default function RootLayout({
           <AppProvider>
             <Header />
             <main
-              className={`md:relative w-full mb-20 md:max-w-[84%] md:left-[16%] overflow-hidden`}
+              className={`md:relative w-full md:max-w-[84%] md:left-[16%] overflow-hidden`}
             >
               {children}
             </main>
