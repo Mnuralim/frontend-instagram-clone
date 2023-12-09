@@ -1,7 +1,7 @@
-import AllPost from "./components/AllPost";
-import HomeHeader from "./components/HomeHeader";
-import StorySlider from "./components/StorySlider";
-import SuggestionFollow from "./components/SuggestionFollow";
+import AllPost from './components/AllPost';
+import HomeHeader from './components/HomeHeader';
+import StorySlider from './components/StorySlider';
+import SuggestionFollow from './components/SuggestionFollow';
 
 export default function Home() {
   return (

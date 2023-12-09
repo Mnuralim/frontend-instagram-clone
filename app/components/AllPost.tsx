@@ -14,7 +14,9 @@ const AllPost = () => {
     post: posts,
     isLoading,
     mutate,
-  }: { post: IPost[]; isLoading: boolean; mutate: KeyedMutator<any> } = usePost(token as string);
+  }: { post: IPost[]; isLoading: boolean; mutate: KeyedMutator<any> } = usePost(
+    token as string
+  );
 
   if (isLoading) return <p>loading...</p>;
 

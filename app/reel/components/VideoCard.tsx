@@ -61,14 +61,14 @@ const VideoCard = ({ post }: Props) => {
     };
   }, []);
   return (
-    <div ref={videoContainerRef} className="w-full h-[95%] relative md:h-full">
+    <div ref={videoContainerRef} className="w-full h-[100%] relative md:h-full">
       <video
         src={post.media}
         ref={vidRef}
         autoPlay
         onClick={handleVideoClick}
         loop
-        className="w-full h-[95%] object-cover object-center md:rounded md:h-full"
+        className="w-full h-[93%] object-cover object-center md:rounded md:h-full"
       />
       <ReelAction post={post} />
       <ReelDetail isVideoPlaying={isPlaying} post={post} />
