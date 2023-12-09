@@ -31,12 +31,12 @@ const Page = () => {
   }, [pathName]);
 
   return (
-    <section className="h-screen min-h-screen md:max-w-[34%] md:mx-auto overflow-y-hidden">
+    <section className="h-screen items-center flex  min-h-screen md:max-w-[34%] md:mx-auto overflow-y-hidden">
       <Swiper
         direction={'vertical'}
         modules={[Pagination, Mousewheel]}
         mousewheel={true}
-        className="w-full h-full"
+        className="w-full h-full md:h-[90%]"
       >
         {posts?.map(
           (post) =>
@@ -45,7 +45,7 @@ const Page = () => {
                 key={post._id}
                 className="flex items-center justify-center w-full h-full"
               >
-                <VideoCard videoUrl={post.media} />
+                <VideoCard post={post} />
               </SwiperSlide>
             )
         )}

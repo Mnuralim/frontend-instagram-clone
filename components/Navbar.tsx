@@ -16,7 +16,7 @@ const Navbar = () => {
     <nav
       className={`${
         pathName === '/login' || pathName === '/register' ? 'hidden' : ''
-      } fixed bottom-0 left-0 z-20 bg-black w-full px-3 flex items-center justify-between md:hidden`}
+      } fixed bottom-0 left-0 z-20 bg-black w-full px-3 flex items-center justify-between max-w-full md:hidden`}
     >
       <Link
         href={'/'}
@@ -24,9 +24,15 @@ const Navbar = () => {
         className="px-2 py-2 rounded-md transition-all ease-in-out duration-300 hover:bg-[#1A1A1A] group"
       >
         {pathName == '/' ? (
-          <PiHouseFill size="25" className="group-hover:scale-110 transition-all ease-in-out duration-300" />
+          <PiHouseFill
+            size="25"
+            className="group-hover:scale-110 transition-all ease-in-out duration-300"
+          />
         ) : (
-          <PiHouse size="25" className="group-hover:scale-110 transition-all ease-in-out duration-300" />
+          <PiHouse
+            size="25"
+            className="group-hover:scale-110 transition-all ease-in-out duration-300"
+          />
         )}
       </Link>
       <Link
@@ -35,7 +41,10 @@ const Navbar = () => {
         className="px-2 py-2 rounded-md transition-all ease-in-out duration-300 hover:bg-[#1A1A1A] group"
       >
         {pathName == '/explore' ? (
-          <FiSearch size="25" className="group-hover:scale-110 transition-all ease-in-out duration-300" />
+          <FiSearch
+            size="25"
+            className="group-hover:scale-110 transition-all ease-in-out duration-300"
+          />
         ) : (
           <FiSearch
             size="25"
@@ -49,9 +58,15 @@ const Navbar = () => {
         className="px-2 py-2 rounded-md transition-all ease-in-out duration-300 hover:bg-[#1A1A1A] group"
       >
         {pathName == '/s' ? (
-          <FiPlusSquare size="25" className="group-hover:scale-110 transition-all ease-in-out duration-300" />
+          <FiPlusSquare
+            size="25"
+            className="group-hover:scale-110 transition-all ease-in-out duration-300"
+          />
         ) : (
-          <FiPlusSquare size="25" className="group-hover:scale-110 transition-all ease-in-out duration-300" />
+          <FiPlusSquare
+            size="25"
+            className="group-hover:scale-110 transition-all ease-in-out duration-300"
+          />
         )}
       </Link>
       <Link

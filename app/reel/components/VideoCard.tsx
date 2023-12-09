@@ -1,12 +1,25 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import ReelAction from './ReelAction';
 
 interface Props {
-  videoUrl: string;
+  post: IPost;
 }
 
-const VideoCard = ({ videoUrl }: Props) => {
+const VideoCard = ({ post }: Props) => {
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const vidRef = useRef<HTMLVideoElement>(null);
   const videoContainerRef = useRef<HTMLDivElement>(null);
+
+  const handleVideoClick = () => {
+    if (vidRef.current) {
+      if (isPlaying) {
+        vidRef.current.pause();
+      } else {
+        vidRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
 
   useEffect(() => {
     const options = {
@@ -37,14 +50,16 @@ const VideoCard = ({ videoUrl }: Props) => {
     };
   }, []);
   return (
-    <div ref={videoContainerRef} className="w-full h-full">
+    <div ref={videoContainerRef} className="w-full h-[95%] relative md:h-full">
       <video
-        src={videoUrl}
+        src={post.media}
         ref={vidRef}
         autoPlay
+        onClick={handleVideoClick}
         loop
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover md:rounded"
       />
+      <ReelAction post={post} />
     </div>
   );
 };
