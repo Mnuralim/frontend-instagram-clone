@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ReelAction from './ReelAction';
 import { useSearchParams } from 'next/navigation';
+import ReelDetail from './ReelDetail';
 
 interface Props {
   post: IPost;
@@ -70,6 +71,8 @@ const VideoCard = ({ post }: Props) => {
         className="w-full h-[95%] object-cover object-center md:rounded md:h-full"
       />
       <ReelAction post={post} />
+      <ReelDetail isVideoPlaying={isPlaying} post={post} />
+      <div className="gradient-overlay"></div>
     </div>
   );
 };

@@ -85,15 +85,17 @@ const Navbar = () => {
         scroll={false}
         className="flex gap-3 items-center px-2 py-2 rounded-md transition-all ease-in-out duration-300 hover:bg-[#1A1A1A] group"
       >
-        <Image
-          src={session?.user.image as string}
-          width={28}
-          height={28}
-          alt="avatar"
-          className={`rounded-full object-cover w-7 h-7 border border-white ${
-            pathName === '/#s' ? 'border-opacity-100' : 'border-opacity-0'
-          }`}
-        />
+        {session && (
+          <Image
+            src={session?.user.image as string}
+            width={28}
+            height={28}
+            alt="avatar"
+            className={`rounded-full object-cover w-7 h-7 border border-white ${
+              pathName === '/#s' ? 'border-opacity-100' : 'border-opacity-0'
+            }`}
+          />
+        )}
       </Link>
     </nav>
   );

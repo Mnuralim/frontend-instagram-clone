@@ -1,6 +1,6 @@
-import Image from "next/image";
-import React from "react";
-import { AiOutlineClose } from "react-icons/ai";
+import Image from 'next/image';
+import React from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
 
 interface Props {
   user?: IUser;
@@ -10,7 +10,13 @@ interface Props {
   deleteHistory: (id: string) => {};
 }
 
-const SearchList = ({ user, isLoading, history, addToHistory, deleteHistory }: Props) => {
+const SearchList = ({
+  user,
+  isLoading,
+  history,
+  addToHistory,
+  deleteHistory,
+}: Props) => {
   if (isLoading) return <p>loading</p>;
   return (
     <>
@@ -28,18 +34,20 @@ const SearchList = ({ user, isLoading, history, addToHistory, deleteHistory }: P
               className="object-cover w-12 h-12 rounded-full"
             />
             <div>
-              <h2 className="text-xs font-semibold text-[#F5F5F5]">{user?.username}</h2>
+              <h2 className="text-xs font-semibold text-[#F5F5F5]">
+                {user?.username}
+              </h2>
               <p className="text-xs text-[#A8A8A8]">{user?.profile.fullName}</p>
             </div>
           </div>
         </div>
       )}
       {!user && history && (
-        <div
-          onClick={() => addToHistory(history.savedUser._id)}
-          className="items-center relative flex justify-between px-2 py-2 hover:bg-[#1A1A1A] cursor-pointer md:px-5"
-        >
-          <div className="flex items-center gap-2">
+        <div className="items-center relative flex justify-between px-2 py-2 hover:bg-[#1A1A1A] cursor-pointer md:px-5">
+          <div
+            onClick={() => addToHistory(history.savedUser._id)}
+            className="flex items-center gap-2 w-[90%]"
+          >
             <Image
               src={history.savedUser.profile.imageProfile}
               alt="profile"
@@ -48,11 +56,18 @@ const SearchList = ({ user, isLoading, history, addToHistory, deleteHistory }: P
               className="object-cover w-12 h-12 rounded-full"
             />
             <div>
-              <h2 className="text-xs font-semibold text-[#F5F5F5]">{history.savedUser.username}</h2>
-              <p className="text-xs text-[#A8A8A8]">{history.savedUser.profile.fullName}</p>
+              <h2 className="text-xs font-semibold text-[#F5F5F5]">
+                {history.savedUser.username}
+              </h2>
+              <p className="text-xs text-[#A8A8A8]">
+                {history.savedUser.profile.fullName}
+              </p>
             </div>
           </div>
-          <button onClick={() => deleteHistory(history._id)} className="absolute right-6 z-10">
+          <button
+            onClick={() => deleteHistory(history._id)}
+            className="hover:scale-110"
+          >
             <AiOutlineClose size="20" color="#A8A8A8" />
           </button>
         </div>

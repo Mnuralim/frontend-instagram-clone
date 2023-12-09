@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import { HiOutlineDotsVertical } from 'react-icons/hi';
+import { HiOutlineBookmark, HiOutlineDotsVertical } from 'react-icons/hi';
 import { IoChatbubbleOutline } from 'react-icons/io5';
 import { LuSendHorizonal } from 'react-icons/lu';
 
@@ -46,9 +46,7 @@ const ReelAction = ({ post }: Props) => {
             className="text-white hover:text-[#A8A8A8] cursor-pointer"
           />
         )}
-        <span className="text-white text-sm font-semibold">
-          {post.totalLike}
-        </span>
+        <span className="text-white text-sm font-normal">{post.totalLike}</span>
       </button>
       <div className="flex flex-col items-center">
         <IoChatbubbleOutline
@@ -58,7 +56,7 @@ const ReelAction = ({ post }: Props) => {
           size="27"
           className="text-white cursor-pointer hover:text-[#A8A8A8] transform scale-x-[-1]"
         />
-        <span className="text-white text-sm font-semibold">
+        <span className="text-white text-sm font-normal">
           {post.totalComment}
         </span>
       </div>
@@ -67,20 +65,18 @@ const ReelAction = ({ post }: Props) => {
           size="25"
           className="text-white hover:text-[#A8A8A8] rotate-[-24deg] "
         />
-        <span className="text-white text-sm font-semibold">12</span>
+        <span className="text-white text-sm font-normal">12</span>
       </div>
       <button>
-        <HiOutlineDotsVertical size="23" />
+        <HiOutlineBookmark size="26" className="text-white" />
       </button>
-      <div className="w-6 h-6 rounded-md border-white border-2 flex items-center justify-center">
+      <div className="w-6 h-6 overflow-hidden rounded-md border-white border-2 flex items-center justify-center">
         <Image
           alt="profile"
           src={post.userId.profile.imageProfile}
           width={28}
           height={28}
-          className={`object-contain rounded-full w-full h-full  ${
-            true ? 'spin-profile' : ''
-          }`}
+          className={`object-contain w-full h-full`}
         />
       </div>
     </div>
