@@ -34,8 +34,6 @@ const ReelDetail = ({ post, isVideoPlaying }: Props) => {
     }
   };
 
-  console.log({ isVideoPlaying });
-
   return (
     <div className="absolute bottom-[77px] left-3 z-20 text-white flex flex-col gap-4 md:bottom-4 ">
       <div className="flex items-center gap-2">

@@ -41,10 +41,7 @@ const Page = () => {
         {posts?.map(
           (post) =>
             post.type === 'reel' && (
-              <SwiperSlide
-                key={post._id}
-                className="flex items-center justify-center w-full h-full"
-              >
+              <SwiperSlide key={post._id} className="w-full h-full">
                 <VideoCard post={post} />
               </SwiperSlide>
             )
