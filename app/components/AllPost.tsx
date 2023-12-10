@@ -17,7 +17,7 @@ const AllPost = () => {
     mutate,
   }: { post: IPost[]; isLoading: boolean; mutate: KeyedMutator<any> } = usePost(token as string)
 
-  if (isLoading) return <PostSkeleton />
+  if (isLoading || !session) return <PostSkeleton />
 
   return (
     <div className="mt-1 md:max-w-[67%] md:mx-auto md:mt-10 overflow-y-hidden">
