@@ -1,77 +1,77 @@
-import React, { useEffect, useState } from 'react';
-import { AiOutlineClose } from 'react-icons/ai';
-import { useRouter } from 'next/navigation';
-import { MdCloudUpload } from 'react-icons/md';
-import Image from 'next/image';
-import { useSession } from 'next-auth/react';
-import ButtonBack from '../ButtonBack';
-import { createPost } from '@/utils/fetch';
-import { useApppContext } from '@/store/context';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { usePost } from '@/utils/swr';
+import React, { useEffect, useState } from 'react'
+import { AiOutlineClose } from 'react-icons/ai'
+import { useRouter } from 'next/navigation'
+import { MdCloudUpload } from 'react-icons/md'
+import Image from 'next/image'
+import { useSession } from 'next-auth/react'
+import ButtonBack from '../ButtonBack'
+import { createPost } from '@/utils/fetch'
+import { useApppContext } from '@/store/context'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { usePost } from '@/utils/swr'
 
 const MainCreatePost = () => {
-  const [image, setImage] = useState<string | ArrayBuffer | null>(null);
-  const [imagePost, setImagePost] = useState<any>(null);
-  const [video, setVideo] = useState<string | ArrayBuffer | null>(null);
-  const [videoPost, setVideoPost] = useState<any>(null);
-  const [caption, setCaption] = useState<string>('');
-  const [type, setType] = useState<string>('');
-  const { dispatch } = useApppContext();
-  const router = useRouter();
-  const { data: session } = useSession();
-  const user = session?.user;
-  const { mutate } = usePost(user?.token as string);
+  const [image, setImage] = useState<string | ArrayBuffer | null>(null)
+  const [imagePost, setImagePost] = useState<any>(null)
+  const [video, setVideo] = useState<string | ArrayBuffer | null>(null)
+  const [videoPost, setVideoPost] = useState<any>(null)
+  const [caption, setCaption] = useState<string>('')
+  const [type, setType] = useState<string>('')
+  const { dispatch } = useApppContext()
+  const router = useRouter()
+  const { data: session } = useSession()
+  const user = session?.user
+  const { mutate } = usePost(user?.token as string)
 
   useEffect(() => {
-    document.body.classList.add('modal-open');
+    document.body.classList.add('modal-open')
 
     return () => {
-      document.body.classList.remove('modal-open');
-    };
-  }, []);
+      document.body.classList.remove('modal-open')
+    }
+  }, [])
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+    const file = e.target.files?.[0]
     if (file && file.size > 5000000) {
       toast.error('Maximum file size is 5mb', {
         position: toast.POSITION.TOP_RIGHT,
-      });
-      return;
+      })
+      return
     }
     if (file) {
-      const reader = new FileReader();
+      const reader = new FileReader()
 
       if (file.type.includes('image')) {
-        setImagePost(file);
-        setVideoPost(null);
-        setType('post');
+        setImagePost(file)
+        setVideoPost(null)
+        setType('post')
         reader.onloadend = () => {
-          setImage(reader.result);
-          setVideo(null);
-        };
-        reader.readAsDataURL(file);
+          setImage(reader.result)
+          setVideo(null)
+        }
+        reader.readAsDataURL(file)
       } else {
-        setVideoPost(file);
-        setImagePost(null);
-        setType('reel');
+        setVideoPost(file)
+        setImagePost(null)
+        setType('reel')
         reader.onloadend = () => {
-          setVideo(reader.result);
-          setImage(null);
-        };
-        reader.readAsDataURL(file);
+          setVideo(reader.result)
+          setImage(null)
+        }
+        reader.readAsDataURL(file)
       }
     }
-  };
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const formData = new FormData();
-    formData.append('caption', caption);
-    formData.append('type', type);
-    formData.append('media', type == 'post' ? imagePost : videoPost);
+    const formData = new FormData()
+    formData.append('caption', caption)
+    formData.append('type', type)
+    formData.append('media', type == 'post' ? imagePost : videoPost)
 
     dispatch({
       type: 'UPDATE_LOADING_UPLOAD',
@@ -80,12 +80,12 @@ const MainCreatePost = () => {
         media: type == 'post' ? (image as string) : (video as string),
         type: type,
       },
-    });
+    })
 
-    router.push('/');
+    router.push('/')
 
     try {
-      const response = await createPost(user?.token as string, formData);
+      const response = await createPost(user?.token as string, formData)
 
       if (response?.ok) {
         dispatch({
@@ -95,22 +95,28 @@ const MainCreatePost = () => {
             media: '',
             type: '',
           },
-        });
-        mutate();
+        })
+        mutate()
       } else {
         toast.error('Failed to create post', {
           position: toast.POSITION.TOP_RIGHT,
-        });
+        })
       }
     } catch (error) {
-      throw new Error('error');
+      throw new Error('error')
     }
-  };
+  }
 
   return (
     <section className="fixed bg-black inset-0 top-0 left-0 z-50 flex justify-center items-center md:bg-opacity-50">
       <div className="absolute right-4 top-4 hidden md:block">
-        <AiOutlineClose onClick={() => router.back()} size="23" color="#fff" className="cursor-pointer" />
+        <AiOutlineClose
+          name="button-back"
+          onClick={() => router.back()}
+          size="23"
+          color="#fff"
+          className="cursor-pointer"
+        />
       </div>
       <div className="w-full h-full z-10 bg-black md:rounded-xl md:max-w-[35%] md:max-h-[80%] md:bg-[#262626]">
         <form onSubmit={handleSubmit}>
@@ -121,7 +127,7 @@ const MainCreatePost = () => {
               </span>
             </div>
             <h2 className="font-semibold ml-4">New Post</h2>
-            <button type="submit" className="text-sm text-indigo-800 font-semibold">
+            <button name="button-submit" type="submit" className="text-sm text-indigo-800 font-semibold">
               Share
             </button>
           </div>
@@ -178,7 +184,7 @@ const MainCreatePost = () => {
       </div>
       <ToastContainer />
     </section>
-  );
-};
+  )
+}
 
-export default MainCreatePost;
+export default MainCreatePost

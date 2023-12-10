@@ -1,70 +1,54 @@
-import { likePost } from '@/utils/fetch';
-import { usePost } from '@/utils/swr';
-import { useSession } from 'next-auth/react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import React from 'react';
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import { HiOutlineBookmark, HiOutlineDotsVertical } from 'react-icons/hi';
-import { IoChatbubbleOutline } from 'react-icons/io5';
-import { LuSendHorizonal } from 'react-icons/lu';
+import { likePost } from '@/utils/fetch'
+import { usePost } from '@/utils/swr'
+import { useSession } from 'next-auth/react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
+import React from 'react'
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
+import { HiOutlineBookmark, HiOutlineDotsVertical } from 'react-icons/hi'
+import { IoChatbubbleOutline } from 'react-icons/io5'
+import { LuSendHorizonal } from 'react-icons/lu'
 
 interface Props {
-  post: IPost;
+  post: IPost
 }
 
 const ReelAction = ({ post }: Props) => {
-  const router = useRouter();
-  const pathName = usePathname();
-  const { data: session } = useSession();
-  const { mutate } = usePost(session?.user.token as string);
+  const router = useRouter()
+  const pathName = usePathname()
+  const { data: session } = useSession()
+  const { mutate } = usePost(session?.user.token as string)
 
   const handleLikePost = async () => {
     try {
-      const response = await likePost(session?.user.token as string, post._id);
-      mutate();
+      const response = await likePost(session?.user.token as string, post._id)
+      mutate()
     } catch (error) {
-      throw new Error('Error');
+      throw new Error('Error')
     }
-  };
+  }
   return (
     <div className="absolute z-20 flex flex-col items-center gap-3 right-3 bottom-[77px] md:bottom-4">
-      <button
-        onClick={handleLikePost}
-        className="flex flex-col items-center cursor-pointer"
-      >
+      <button onClick={handleLikePost} className="flex flex-col items-center cursor-pointer" name="button-like">
         {post.alreadyLike ? (
-          <AiFillHeart
-            size="28"
-            color="#FF3040"
-            className="text-[#FF3040] cursor-pointer"
-          />
+          <AiFillHeart size="28" color="#FF3040" className="text-[#FF3040] cursor-pointer" />
         ) : (
-          <AiOutlineHeart
-            size="28"
-            className="text-white hover:text-[#A8A8A8] cursor-pointer"
-          />
+          <AiOutlineHeart size="28" className="text-white hover:text-[#A8A8A8] cursor-pointer" />
         )}
         <span className="text-white text-sm font-normal">{post.totalLike}</span>
       </button>
       <div className="flex flex-col items-center">
         <IoChatbubbleOutline
-          onClick={() =>
-            router.push(`${pathName}/?p=${post._id}`, { scroll: false })
-          }
+          onClick={() => router.push(`${pathName}/?p=${post._id}`, { scroll: false })}
           size="27"
+          name="open-comment"
           className="text-white cursor-pointer hover:text-[#A8A8A8] transform scale-x-[-1]"
         />
-        <span className="text-white text-sm font-normal">
-          {post.totalComment}
-        </span>
+        <span className="text-white text-sm font-normal">{post.totalComment}</span>
       </div>
       <div className="flex flex-col items-center gap-1">
-        <LuSendHorizonal
-          size="25"
-          className="text-white hover:text-[#A8A8A8] rotate-[-24deg] "
-        />
+        <LuSendHorizonal size="25" className="text-white hover:text-[#A8A8A8] rotate-[-24deg] " />
         <span className="text-white text-sm font-normal">12</span>
       </div>
       <button>
@@ -80,7 +64,7 @@ const ReelAction = ({ post }: Props) => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ReelAction;
+export default ReelAction

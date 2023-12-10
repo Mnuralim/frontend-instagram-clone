@@ -1,20 +1,20 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { AiOutlineHeart } from "react-icons/ai";
-import { Collapse } from "react-collapse";
-import DateConv from "../DateConv";
-import Avatar from "../Avatar";
+import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { AiOutlineHeart } from 'react-icons/ai'
+import { Collapse } from 'react-collapse'
+import DateConv from '../DateConv'
+import Avatar from '../Avatar'
 
 interface Props {
-  comment: IComment;
-  open: boolean;
-  togle: () => void;
-  chooseComment: (commentId: string, username: string) => void;
+  comment: IComment
+  open: boolean
+  togle: () => void
+  chooseComment: (commentId: string, username: string) => void
 }
 
 const CommentList = ({ comment, open, togle, chooseComment }: Props) => {
-  const replies = comment.replies as IReplies[];
+  const replies = comment.replies as IReplies[]
   return (
     <div id="top-list" className="flex gap-2 justify-between px-3">
       <div className="flex gap-3 w-full">
@@ -35,8 +35,10 @@ const CommentList = ({ comment, open, togle, chooseComment }: Props) => {
           </p>
           <p className="text-sm">{comment?.text}</p>
           <div className="flex text-xs gap-4 text-[#a8a8a8]">
-            <button onClick={() => chooseComment(comment._id, comment.user.username)}>Reply</button>
-            <button>See translation</button>
+            <button name="choose-comment" onClick={() => chooseComment(comment._id, comment.user.username)}>
+              Reply
+            </button>
+            <button name="button-translate">See translation</button>
           </div>
           <Collapse isOpened={open}>
             <div className="flex flex-col w-full gap-3 mt-3">
@@ -52,9 +54,6 @@ const CommentList = ({ comment, open, togle, chooseComment }: Props) => {
                         </span>
                       </p>
                       <p className="text-sm">{c.text}</p>
-                      {/* <div className="flex  text-xs gap-4 text-[#a8a8a8]">
-                        <button>Reply</button>
-                      </div> */}
                     </div>
                   </div>
                   <div className="flex flex-col items-center gap-1 text-[#a8a8a8] absolute -right-[30px]">
@@ -66,10 +65,10 @@ const CommentList = ({ comment, open, togle, chooseComment }: Props) => {
             </div>
           </Collapse>
           {replies.length !== 0 && (
-            <button onClick={togle} className="flex items-center gap-2 mt-1">
+            <button name="button-togle" onClick={togle} className="flex items-center gap-2 mt-1">
               <div className="bg-[#a8a8a8] w-8 bg-opacity-20 h-[0.5px]"></div>
               <p className="text-xs text-[#a8a8a8]">
-                {!open ? `View ${replies.length} ${replies.length <= 1 ? "reply" : "replies"}` : "Hide replies"}
+                {!open ? `View ${replies.length} ${replies.length <= 1 ? 'reply' : 'replies'}` : 'Hide replies'}
               </p>
             </button>
           )}
@@ -82,7 +81,7 @@ const CommentList = ({ comment, open, togle, chooseComment }: Props) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CommentList;
+export default CommentList

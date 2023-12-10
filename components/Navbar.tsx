@@ -1,17 +1,17 @@
-'use client';
-import React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useSession } from 'next-auth/react';
-import Image from 'next/image';
+'use client'
+import React from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useSession } from 'next-auth/react'
+import Image from 'next/image'
 
-import { PiHouse, PiHouseFill } from 'react-icons/pi';
-import { FiPlusSquare, FiSearch } from 'react-icons/fi';
-import { ReelIcons1, ReelIcons2 } from './ReelIcons';
+import { PiHouse, PiHouseFill } from 'react-icons/pi'
+import { FiPlusSquare, FiSearch } from 'react-icons/fi'
+import { ReelIcons1, ReelIcons2 } from './ReelIcons'
 
 const Navbar = () => {
-  const { data: session } = useSession();
-  const pathName = usePathname();
+  const { data: session } = useSession()
+  const pathName = usePathname()
   return (
     <nav
       className={`${
@@ -19,32 +19,25 @@ const Navbar = () => {
       } fixed bottom-0 left-0 z-20 bg-black w-full px-3 flex items-center justify-between max-w-full md:hidden`}
     >
       <Link
+        aria-label="link"
         href={'/'}
         scroll={false}
         className="px-2 py-2 rounded-md transition-all ease-in-out duration-300 hover:bg-[#1A1A1A] group"
       >
         {pathName == '/' ? (
-          <PiHouseFill
-            size="25"
-            className="group-hover:scale-110 transition-all ease-in-out duration-300"
-          />
+          <PiHouseFill size="25" className="group-hover:scale-110 transition-all ease-in-out duration-300" />
         ) : (
-          <PiHouse
-            size="25"
-            className="group-hover:scale-110 transition-all ease-in-out duration-300"
-          />
+          <PiHouse size="25" className="group-hover:scale-110 transition-all ease-in-out duration-300" />
         )}
       </Link>
       <Link
+        aria-label="link"
         href={'/explore'}
         scroll={false}
         className="px-2 py-2 rounded-md transition-all ease-in-out duration-300 hover:bg-[#1A1A1A] group"
       >
         {pathName == '/explore' ? (
-          <FiSearch
-            size="25"
-            className="group-hover:scale-110 transition-all ease-in-out duration-300"
-          />
+          <FiSearch size="25" className="group-hover:scale-110 transition-all ease-in-out duration-300" />
         ) : (
           <FiSearch
             size="25"
@@ -53,23 +46,19 @@ const Navbar = () => {
         )}
       </Link>
       <Link
+        aria-label="link"
         href={`${pathName}/?create=true`}
         scroll={false}
         className="px-2 py-2 rounded-md transition-all ease-in-out duration-300 hover:bg-[#1A1A1A] group"
       >
         {pathName == '/s' ? (
-          <FiPlusSquare
-            size="25"
-            className="group-hover:scale-110 transition-all ease-in-out duration-300"
-          />
+          <FiPlusSquare size="25" className="group-hover:scale-110 transition-all ease-in-out duration-300" />
         ) : (
-          <FiPlusSquare
-            size="25"
-            className="group-hover:scale-110 transition-all ease-in-out duration-300"
-          />
+          <FiPlusSquare size="25" className="group-hover:scale-110 transition-all ease-in-out duration-300" />
         )}
       </Link>
       <Link
+        aria-label="link"
         href={'/reel'}
         scroll={false}
         className="flex gap-[14px] items-center px-[10px] py-3 rounded-md transition-all ease-in-out duration-300 hover:bg-[#1A1A1A] group"
@@ -81,6 +70,7 @@ const Navbar = () => {
         )}
       </Link>
       <Link
+        aria-label="link"
         href={`/${session?.user._id}/?tab=post`}
         scroll={false}
         className="flex gap-3 items-center px-2 py-2 rounded-md transition-all ease-in-out duration-300 hover:bg-[#1A1A1A] group"
@@ -98,7 +88,7 @@ const Navbar = () => {
         )}
       </Link>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

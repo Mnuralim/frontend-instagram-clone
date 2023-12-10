@@ -28,7 +28,11 @@ const ListUserCard = ({ user, handleFollow }: Props) => {
           <Avatar src={imageProfile} userId={user._id} className="w-11 h-11" story={true} />
           <div>
             <div className="group relative">
-              <Link href={`/${user._id}`} className="text-xs font-semibold text-[#F5F5F5] hover:text-[#A8A8A8]">
+              <Link
+                aria-label="link"
+                href={`/${user._id}`}
+                className="text-xs font-semibold text-[#F5F5F5] hover:text-[#A8A8A8]"
+              >
                 {username}
               </Link>
               <div className="absolute top-7 opacity-0 transform transition-all -z-10 duration-500 group-hover:md:block group-hover:z-50 group-hover:opacity-100">
@@ -39,6 +43,7 @@ const ListUserCard = ({ user, handleFollow }: Props) => {
           </div>
         </div>
         <button
+          name="button-follow"
           onClick={() => handleFollow(_id)}
           className={`${
             alreadyFollow ? 'bg-[#262626]' : 'bg-[#0195f7]'

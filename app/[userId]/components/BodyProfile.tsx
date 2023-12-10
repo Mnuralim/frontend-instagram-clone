@@ -1,19 +1,19 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
-import { AiOutlineLink } from 'react-icons/ai';
-import { HiOutlineUserAdd } from 'react-icons/hi';
-import StoryProfile from './StoryProfile';
-import TabPost from './TabPost';
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
+import { AiOutlineLink } from 'react-icons/ai'
+import { HiOutlineUserAdd } from 'react-icons/hi'
+import StoryProfile from './StoryProfile'
+import TabPost from './TabPost'
 
 interface Props {
-  user: IUser;
-  userSessionId: string;
-  handleFollowUser: () => {};
+  user: IUser
+  userSessionId: string
+  handleFollowUser: () => {}
 }
 
 const BodyProfile = ({ user, userSessionId, handleFollowUser }: Props) => {
-  const isMyProfile = user?._id === userSessionId;
+  const isMyProfile = user?._id === userSessionId
 
   return (
     <div>
@@ -32,13 +32,17 @@ const BodyProfile = ({ user, userSessionId, handleFollowUser }: Props) => {
             <div className="items-center w-full gap-3 mb-5 hidden md:flex">
               <p className="text-lg">{user?.username}</p>
               <Link
+                aria-label="link"
                 href={`/${user?._id}/?tab=edit`}
                 scroll={false}
                 className="bg-[#262626] py-1 w-28 text-center rounded-lg font-semibold hover:bg-[#151515]"
               >
                 Edit profile
               </Link>
-              <button className="bg-[#262626] py-1 w-28  text-center rounded-lg font-semibold hover:bg-[#151515]">
+              <button
+                name="button-share"
+                className="bg-[#262626] py-1 w-28  text-center rounded-lg font-semibold hover:bg-[#151515]"
+              >
                 Share profile
               </button>
             </div>
@@ -46,6 +50,7 @@ const BodyProfile = ({ user, userSessionId, handleFollowUser }: Props) => {
             <div className="items-center w-full gap-3 mb-5 hidden md:flex">
               <p className="text-lg">{user?.username}</p>
               <button
+                name="button-follow"
                 onClick={handleFollowUser}
                 className={`${
                   user?.alreadyFollow ? 'bg-[#262626]' : 'bg-[#0195f7]'
@@ -53,10 +58,16 @@ const BodyProfile = ({ user, userSessionId, handleFollowUser }: Props) => {
               >
                 {user.alreadyFollow ? 'Following' : 'Follow'}
               </button>
-              <button className="bg-[#262626] py-1 w-28 text-center rounded-lg font-semibold hover:bg-[#151515]">
+              <button
+                name="button-message"
+                className="bg-[#262626] py-1 w-28 text-center rounded-lg font-semibold hover:bg-[#151515]"
+              >
                 Message
               </button>
-              <button className="bg-[#262626] py-1 w-[9%]  rounded-lg font-semibold hover:bg-[#151515]">
+              <button
+                name="button-add"
+                className="bg-[#262626] py-1 w-[9%]  rounded-lg font-semibold hover:bg-[#151515]"
+              >
                 <HiOutlineUserAdd className="text-center inline-block transform scale-x-[-1]" />
               </button>
             </div>
@@ -79,7 +90,12 @@ const BodyProfile = ({ user, userSessionId, handleFollowUser }: Props) => {
             <h2 className="font-semibold text-sm">{user?.profile.fullName}</h2>
             <p className="text-sm">{user?.profile?.bio}</p>
             {user.profile.link && (
-              <Link href={`https://${user?.profile?.link}`} target="_blank" className="text-sm text-[#E0F1FF]">
+              <Link
+                aria-label="link"
+                href={`https://${user?.profile?.link}`}
+                target="_blank"
+                className="text-sm text-[#E0F1FF]"
+              >
                 <AiOutlineLink className="inline text-lg" /> {user?.profile?.link}
               </Link>
             )}
@@ -90,7 +106,12 @@ const BodyProfile = ({ user, userSessionId, handleFollowUser }: Props) => {
         <h2 className="font-semibold text-lg">{user?.profile.fullName}</h2>
         <p className="text-sm">{user?.profile?.bio}</p>
         {user.profile.link && (
-          <Link href={`https://${user?.profile?.link}`} target="_blank" className="text-sm text-[#E0F1FF]">
+          <Link
+            aria-label="link"
+            href={`https://${user?.profile?.link}`}
+            target="_blank"
+            className="text-sm text-[#E0F1FF]"
+          >
             <AiOutlineLink className="inline text-lg" /> {user?.profile?.link}
           </Link>
         )}
@@ -98,22 +119,27 @@ const BodyProfile = ({ user, userSessionId, handleFollowUser }: Props) => {
       {isMyProfile ? (
         <div className="flex items-center gap-1 my-3 px-3 md:hidden">
           <Link
+            aria-label="link"
             href={`/${user?._id}/?tab=edit`}
             scroll={false}
             className="bg-[#262626] py-1 w-[45%] text-center rounded-lg font-semibold hover:bg-[#151515]"
           >
             Edit profile
           </Link>
-          <button className="bg-[#262626] py-1 w-[45%] text-center rounded-lg font-semibold hover:bg-[#151515]">
+          <button
+            name="button-share"
+            className="bg-[#262626] py-1 w-[45%] text-center rounded-lg font-semibold hover:bg-[#151515]"
+          >
             Share profile
           </button>
-          <button className="bg-[#262626] py-1 w-[9%]  rounded-lg font-semibold hover:bg-[#151515]">
+          <button name="button-add" className="bg-[#262626] py-1 w-[9%]  rounded-lg font-semibold hover:bg-[#151515]">
             <HiOutlineUserAdd className="text-center inline-block transform scale-x-[-1]" />
           </button>
         </div>
       ) : (
         <div className="flex items-center gap-1 my-3 px-3 md:hidden">
           <button
+            name="button-follow"
             onClick={handleFollowUser}
             className={`${
               user?.alreadyFollow ? 'bg-[#262626]' : 'bg-[#0195f7]'
@@ -121,10 +147,13 @@ const BodyProfile = ({ user, userSessionId, handleFollowUser }: Props) => {
           >
             {user.alreadyFollow ? 'Following' : 'Follow'}
           </button>
-          <button className="bg-[#262626] py-1 w-[45%] text-center rounded-lg font-semibold hover:bg-[#151515]">
+          <button
+            name="button-message"
+            className="bg-[#262626] py-1 w-[45%] text-center rounded-lg font-semibold hover:bg-[#151515]"
+          >
             Message
           </button>
-          <button className="bg-[#262626] py-1 w-[9%]  rounded-lg font-semibold hover:bg-[#151515]">
+          <button name="button-add" className="bg-[#262626] py-1 w-[9%]  rounded-lg font-semibold hover:bg-[#151515]">
             <HiOutlineUserAdd className="text-center inline-block transform scale-x-[-1]" />
           </button>
         </div>
@@ -132,7 +161,7 @@ const BodyProfile = ({ user, userSessionId, handleFollowUser }: Props) => {
       <StoryProfile />
       <TabPost user={user} />
     </div>
-  );
-};
+  )
+}
 
-export default BodyProfile;
+export default BodyProfile

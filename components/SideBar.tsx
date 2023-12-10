@@ -1,38 +1,38 @@
-'use client';
-import Link from 'next/link';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import React from 'react';
-import { useSession } from 'next-auth/react';
-import Image from 'next/image';
+'use client'
+import Link from 'next/link'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import React from 'react'
+import { useSession } from 'next-auth/react'
+import Image from 'next/image'
 
-import { PiCompassFill, PiHouse, PiHouseFill, PiMessengerLogo, PiMessengerLogoFill } from 'react-icons/pi';
-import { FiPlusSquare, FiSearch } from 'react-icons/fi';
-import { AiFillHeart, AiOutlineCompass, AiOutlineHeart } from 'react-icons/ai';
-import { ReelIcons1, ReelIcons2 } from './ReelIcons';
-import Logo from './IgLogo';
-import SearchMenu from './SearchMenu';
-import { BsInstagram } from 'react-icons/bs';
+import { PiCompassFill, PiHouse, PiHouseFill, PiMessengerLogo, PiMessengerLogoFill } from 'react-icons/pi'
+import { FiPlusSquare, FiSearch } from 'react-icons/fi'
+import { AiFillHeart, AiOutlineCompass, AiOutlineHeart } from 'react-icons/ai'
+import { ReelIcons1, ReelIcons2 } from './ReelIcons'
+import Logo from './IgLogo'
+import SearchMenu from './SearchMenu'
+import { BsInstagram } from 'react-icons/bs'
 
 const SideBar = () => {
-  const { data: session } = useSession();
-  const pathName = usePathname();
-  const router = useRouter();
-  const searchParams = useSearchParams();
+  const { data: session } = useSession()
+  const pathName = usePathname()
+  const router = useRouter()
+  const searchParams = useSearchParams()
 
-  const searchTab = searchParams?.get('search') === 'true';
+  const searchTab = searchParams?.get('search') === 'true'
 
   const handleShowSearchMenu = () => {
     if (!searchTab) {
-      router.push(`${pathName}/?search=true`, { scroll: false });
+      router.push(`${pathName}/?search=true`, { scroll: false })
     } else {
-      router.push(`${pathName}`, { scroll: false });
+      router.push(`${pathName}`, { scroll: false })
     }
-  };
+  }
 
   const sideBarClassName = `flex gap-3 items-center px-2 py-3 rounded-md transition-all ease-in-out duration-300 group ${
     searchTab ? '' : 'hover:bg-[#1A1A1A]'
-  } `;
-  const sideBarIconClassName = 'group-hover:scale-110 transition-all ease-in-out duration-300 ';
+  } `
+  const sideBarIconClassName = 'group-hover:scale-110 transition-all ease-in-out duration-300 '
 
   return (
     <aside
@@ -52,7 +52,7 @@ const SideBar = () => {
         }`}
       />
       <div className="px-3 flex flex-col mt-10">
-        <Link href={'/'} prefetch={false} scroll={false} className={sideBarClassName}>
+        <Link aria-label="link" href={'/'} prefetch={false} scroll={false} className={sideBarClassName}>
           {pathName == '/' ? (
             <PiHouseFill size="28" className={sideBarIconClassName} />
           ) : (
@@ -82,7 +82,7 @@ const SideBar = () => {
             Search
           </p>
         </button>
-        <Link href={'/explore'} prefetch={false} scroll={false} className={sideBarClassName}>
+        <Link aria-label="link" href={'/explore'} prefetch={false} scroll={false} className={sideBarClassName}>
           <div className={`${searchTab ? 'p-2 -my-2 -mx-2 hover:bg-[#1A1A1A]' : ''} rounded-md`}>
             {pathName == '/explore' ? (
               <PiCompassFill size="28" className={sideBarIconClassName} />
@@ -99,6 +99,7 @@ const SideBar = () => {
           </p>
         </Link>
         <Link
+          aria-label="link"
           href={'/reel'}
           className={`flex gap-[14px] items-center px-[10px] py-3 rounded-md transition-all ease-in-out duration-300 group ${
             searchTab ? '' : 'hover:bg-[#1A1A1A]'
@@ -119,7 +120,7 @@ const SideBar = () => {
             Reel
           </p>
         </Link>
-        <Link href={'/direct'} prefetch={false} scroll={false} className={sideBarClassName}>
+        <Link aria-label="link" href={'/direct'} prefetch={false} scroll={false} className={sideBarClassName}>
           <div className={`${searchTab ? 'p-2 -my-2 -mx-2 hover:bg-[#1A1A1A]' : ''} rounded-md`}>
             {pathName == '/direct' ? (
               <PiMessengerLogoFill size="28" className={sideBarIconClassName} />
@@ -135,7 +136,7 @@ const SideBar = () => {
             Messages
           </p>
         </Link>
-        <Link href={'/notification'} prefetch={false} scroll={false} className={sideBarClassName}>
+        <Link aria-label="link" href={'/notification'} prefetch={false} scroll={false} className={sideBarClassName}>
           <div className={`${searchTab ? 'p-2 -my-2 -mx-2 hover:bg-[#1A1A1A]' : ''} rounded-md`}>
             {pathName == '/notification' ? (
               <AiFillHeart size="28" className={sideBarIconClassName} />
@@ -151,7 +152,13 @@ const SideBar = () => {
             Notifications
           </p>
         </Link>
-        <Link href={`${pathName}/?create=true`} prefetch={false} scroll={false} className={sideBarClassName}>
+        <Link
+          aria-label="link"
+          href={`${pathName}/?create=true`}
+          prefetch={false}
+          scroll={false}
+          className={sideBarClassName}
+        >
           <div className={`${searchTab ? 'p-2 -my-2 -mx-2 hover:bg-[#1A1A1A]' : ''} rounded-md`}>
             {pathName == '/s' ? (
               <FiPlusSquare size="28" className={sideBarIconClassName} />
@@ -167,7 +174,13 @@ const SideBar = () => {
             Create
           </p>
         </Link>
-        <Link href={`/${session?.user._id}/?tab=post`} prefetch={false} scroll={false} className={sideBarClassName}>
+        <Link
+          aria-label="link"
+          href={`/${session?.user._id}/?tab=post`}
+          prefetch={false}
+          scroll={false}
+          className={sideBarClassName}
+        >
           <div className={`${searchTab ? 'p-2 -my-2 -mx-2 hover:bg-[#1A1A1A]' : ''} rounded-md`}>
             <Image
               src={session?.user.image as string}
@@ -196,7 +209,7 @@ const SideBar = () => {
         <SearchMenu />
       </div>
     </aside>
-  );
-};
+  )
+}
 
-export default SideBar;
+export default SideBar

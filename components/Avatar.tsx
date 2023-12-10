@@ -1,18 +1,18 @@
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import PreviewProfile from './PreviewProfile';
+import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import PreviewProfile from './PreviewProfile'
 
 interface Props {
-  userId: string;
-  className: string;
-  src: string;
-  story: boolean;
+  userId: string
+  className: string
+  src: string
+  story: boolean
 }
 
 const Avatar = ({ userId, src, className, story }: Props) => {
   return (
-    <Link href={`/${userId}/?tab=post`} scroll={false} className="rounded-full  relative  group">
+    <Link aria-label="link" href={`/${userId}/?tab=post`} scroll={false} className="rounded-full  relative  group">
       <Image
         src={src || 'giphy.gif'}
         alt="profile"
@@ -26,7 +26,7 @@ const Avatar = ({ userId, src, className, story }: Props) => {
         <PreviewProfile userId={userId} />
       </div>
     </Link>
-  );
-};
+  )
+}
 
-export default Avatar;
+export default Avatar

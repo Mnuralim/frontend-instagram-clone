@@ -1,10 +1,10 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import DateConv from "../DateConv";
+import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import DateConv from '../DateConv'
 
 interface Props {
-  post: IPost;
+  post: IPost
 }
 
 const Caption = ({ post }: Props) => {
@@ -12,7 +12,7 @@ const Caption = ({ post }: Props) => {
     <>
       <div className="hidden bg-black border-b border-opacity-25 py-3 z-10 border-slate-50 px-3 md:block md:fixed w-[37%]">
         <div className="flex items-center gap-3">
-          <Link href={`/${post?.userId?._id}/?tab=post`} scroll={false} className="rounded-full ">
+          <Link aria-label="link" href={`/${post?.userId?._id}/?tab=post`} scroll={false} className="rounded-full ">
             <Image
               src={post?.userId.profile?.imageProfile}
               alt="profile"
@@ -22,6 +22,7 @@ const Caption = ({ post }: Props) => {
             />
           </Link>
           <Link
+            aria-label="link"
             href={`/${post?.userId?._id}/?tab=post`}
             scroll={false}
             className="font-semibold text-sm hover:text-[#A8A8A8]"
@@ -34,6 +35,7 @@ const Caption = ({ post }: Props) => {
       <div className="hidden mt-16 md:block bg-black py-3 w-full px-3">
         <div className="flex items-center gap-3">
           <Link
+            aria-label="link"
             href={`/${post?.userId?._id}/?tab=post`}
             scroll={false}
             className="rounded-full self-start min-w-[37px]"
@@ -48,6 +50,7 @@ const Caption = ({ post }: Props) => {
           </Link>
           <div>
             <Link
+              aria-label="link"
               href={`/${post?.userId?._id}/?tab=post`}
               scroll={false}
               className="font-semibold text-sm hover:text-[#A8A8A8]"
@@ -57,13 +60,13 @@ const Caption = ({ post }: Props) => {
             <span className="ml-3 text-sm leading-6">{post.caption}</span>
             <div className="flex text-xs gap-4 text-[#a8a8a8]">
               <DateConv createdAt={post.createdAt} />
-              <button>See translation</button>
+              <button name="button-translate">See translation</button>
             </div>
           </div>
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Caption;
+export default Caption

@@ -1,24 +1,22 @@
-'use client';
-import React, { useEffect, useRef, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import { Pagination, Mousewheel } from 'swiper/modules';
-import { usePost } from '@/utils/swr';
-import { useSession } from 'next-auth/react';
-import { KeyedMutator } from 'swr';
-import VideoCard from './components/VideoCard';
-import { usePathname } from 'next/navigation';
+'use client'
+import React, { useEffect, useRef, useState } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import { Pagination, Mousewheel } from 'swiper/modules'
+import { usePost } from '@/utils/swr'
+import { useSession } from 'next-auth/react'
+import { KeyedMutator } from 'swr'
+import VideoCard from './components/VideoCard'
+import { usePathname } from 'next/navigation'
 
 const Page = () => {
-  const { data: session } = useSession();
-  const pathName = usePathname();
+  const { data: session } = useSession()
+  const pathName = usePathname()
   const {
     post: posts,
     mutate,
     isLoading,
-  }: { post: IPost[]; mutate: KeyedMutator<any>; isLoading: boolean } = usePost(
-    session?.user.token as string
-  );
+  }: { post: IPost[]; mutate: KeyedMutator<any>; isLoading: boolean } = usePost(session?.user.token as string)
 
   // useEffect(() => {
   //   if (pathName === '/reel') {
@@ -48,7 +46,7 @@ const Page = () => {
         )}
       </Swiper>
     </section>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page

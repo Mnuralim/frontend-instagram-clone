@@ -28,7 +28,7 @@ const SuggestionSkeleton = () => {
             <p className="bg-gray-600 animate-pulse h-4 w-10 rounded mt-2"></p>
           </div>
         </div>
-        <button className={` w-[25%] bg-gray-600 animate-pulse h-6 rounded`}></button>
+        <div className={` w-[25%] bg-gray-600 animate-pulse h-6 rounded`}></div>
       </div>
     </div>
   )

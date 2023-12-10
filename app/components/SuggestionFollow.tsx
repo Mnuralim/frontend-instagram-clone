@@ -45,6 +45,7 @@ const SuggestionFollow = () => {
           </div>
         </div>
         <button
+          name="button-logout"
           onClick={() => signOut({ callbackUrl: '/login' })}
           className={`bg-[#0195f7] py-1 w-[25%] text-xs text-center rounded-md font-semibold hover:bg-[#A8A8A8]`}
         >
@@ -53,7 +54,7 @@ const SuggestionFollow = () => {
       </div>
       <div className="flex items-center justify-between mt-6 pt-[6px] pb-1 px-3 md:px-10">
         <p className="font-semibold text-sm  md:text-[#A8A8A8]">Suggested for you</p>
-        <Link href={'/'} className="text-xs text-[#0694F1] md:text-[#f2f2f2]">
+        <Link aria-label="link" href={'/'} className="text-xs text-[#0694F1] md:text-[#f2f2f2]">
           See All
         </Link>
       </div>

@@ -1,42 +1,43 @@
-import { ReelIcons1 } from "@/components/ReelIcons";
-import Image from "next/image";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { AiFillHeart } from "react-icons/ai";
-import { BsFillImageFill } from "react-icons/bs";
-import { PiChatCircleFill } from "react-icons/pi";
-import { usePathname } from "next/navigation";
+import { ReelIcons1 } from '@/components/ReelIcons'
+import Image from 'next/image'
+import Link from 'next/link'
+import React, { useEffect, useState } from 'react'
+import { AiFillHeart } from 'react-icons/ai'
+import { BsFillImageFill } from 'react-icons/bs'
+import { PiChatCircleFill } from 'react-icons/pi'
+import { usePathname } from 'next/navigation'
 
 interface Props {
-  post: IPost;
+  post: IPost
 }
 
 const PostCard = ({ post }: Props) => {
-  const [screenSize, setScreenSize] = useState<number>(0);
-  const pathName = usePathname();
+  const [screenSize, setScreenSize] = useState<number>(0)
+  const pathName = usePathname()
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setScreenSize(window.innerWidth);
+    if (typeof window !== 'undefined') {
+      setScreenSize(window.innerWidth)
 
       const handleResize = () => {
-        setScreenSize(window.innerWidth);
-      };
+        setScreenSize(window.innerWidth)
+      }
 
-      window.addEventListener("resize", handleResize);
+      window.addEventListener('resize', handleResize)
 
       return () => {
-        window.removeEventListener("resize", handleResize);
-      };
+        window.removeEventListener('resize', handleResize)
+      }
     }
-  }, []);
+  }, [])
 
   return (
     <Link
+      aria-label="link"
       href={screenSize <= 768 ? `/p/${post._id}` : `${pathName}/?post=tab&p=${post._id}`}
       className="aspect-square relative group"
     >
-      {post.type === "post" ? (
+      {post.type === 'post' ? (
         <Image
           src={post?.media}
           width={10000}
@@ -64,14 +65,14 @@ const PostCard = ({ post }: Props) => {
         </div>
       </div>
       <div className="absolute top-2 right-2 white-logo">
-        {post.type === "reel" ? (
+        {post.type === 'reel' ? (
           <ReelIcons1 className="white-logo w-4 h-4 md:w-[23px] md:h-[23px]" />
         ) : (
           <BsFillImageFill className="md:text-[23px]" />
         )}
       </div>
     </Link>
-  );
-};
+  )
+}
 
-export default PostCard;
+export default PostCard

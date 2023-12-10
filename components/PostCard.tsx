@@ -1,93 +1,93 @@
-import React, { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
-import { useSession } from 'next-auth/react';
-import { KeyedMutator } from 'swr';
+import React, { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
+import { useSession } from 'next-auth/react'
+import { KeyedMutator } from 'swr'
 
-import { HiOutlineBookmark, HiOutlineDotsVertical } from 'react-icons/hi';
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import { IoChatbubbleOutline } from 'react-icons/io5';
-import { LuSendHorizonal } from 'react-icons/lu';
-import { BsDot } from 'react-icons/bs';
-import { likePost } from '@/utils/fetch';
-import Link from 'next/link';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import PreviewProfile from './PreviewProfile';
-import Avatar from './Avatar';
-import DateConv from './DateConv';
+import { HiOutlineBookmark, HiOutlineDotsVertical } from 'react-icons/hi'
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
+import { IoChatbubbleOutline } from 'react-icons/io5'
+import { LuSendHorizonal } from 'react-icons/lu'
+import { BsDot } from 'react-icons/bs'
+import { likePost } from '@/utils/fetch'
+import Link from 'next/link'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import PreviewProfile from './PreviewProfile'
+import Avatar from './Avatar'
+import DateConv from './DateConv'
 
 interface Props {
-  post: IPost;
-  mutate: KeyedMutator<any>;
+  post: IPost
+  mutate: KeyedMutator<any>
 }
 
 const PostCard = ({ post, mutate }: Props) => {
-  const vidRef = useRef<HTMLVideoElement>(null);
-  const videoContainerRef = useRef<HTMLDivElement>(null);
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const router = useRouter();
-  const pathName = usePathname();
-  const searchParams = useSearchParams();
+  const vidRef = useRef<HTMLVideoElement>(null)
+  const videoContainerRef = useRef<HTMLDivElement>(null)
+  const [isPlaying, setIsPlaying] = useState<boolean>(false)
+  const router = useRouter()
+  const pathName = usePathname()
+  const searchParams = useSearchParams()
 
-  const detailPost = searchParams?.get('p');
-  const createPost = searchParams?.get('create');
+  const detailPost = searchParams?.get('p')
+  const createPost = searchParams?.get('create')
 
-  const { data: session } = useSession();
-  const token = session?.user.token;
+  const { data: session } = useSession()
+  const token = session?.user.token
 
   useEffect(() => {
     if (detailPost || createPost) {
-      vidRef.current?.pause();
+      vidRef.current?.pause()
     }
-  }, [detailPost, createPost]);
+  }, [detailPost, createPost])
 
   useEffect(() => {
     const options = {
       root: null,
       rootMargin: '0px',
       threshold: 0.5,
-    };
+    }
 
     const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
+      const entry = entries[0]
       if (entry.isIntersecting) {
-        vidRef.current?.play();
+        vidRef.current?.play()
       } else {
-        vidRef.current?.pause();
+        vidRef.current?.pause()
       }
-    }, options);
+    }, options)
 
-    const currentVideoRef = vidRef.current;
+    const currentVideoRef = vidRef.current
 
     if (currentVideoRef) {
-      observer.observe(currentVideoRef);
+      observer.observe(currentVideoRef)
     }
 
     return () => {
       if (currentVideoRef) {
-        observer.unobserve(currentVideoRef);
+        observer.unobserve(currentVideoRef)
       }
-    };
-  }, []);
+    }
+  }, [])
 
   const handleVideoClick = () => {
     if (vidRef.current) {
       if (isPlaying) {
-        vidRef.current.pause();
+        vidRef.current.pause()
       } else {
-        vidRef.current.play();
+        vidRef.current.play()
       }
-      setIsPlaying(!isPlaying);
+      setIsPlaying(!isPlaying)
     }
-  };
+  }
 
   const handleLikePost = async () => {
     try {
-      const response = await likePost(token as string, post._id);
-      mutate();
+      const response = await likePost(token as string, post._id)
+      mutate()
     } catch (error) {
-      throw new Error('Error');
+      throw new Error('Error')
     }
-  };
+  }
 
   return (
     <div className="border-b border-slate-400 border-opacity-0 md:border-opacity-25 pb-5">
@@ -96,6 +96,7 @@ const PostCard = ({ post, mutate }: Props) => {
           <Avatar src={post.userId.profile.imageProfile} userId={post.userId._id} className="w-10 h-10" story={true} />
           <div className="relative group">
             <Link
+              aria-label="link"
               href={`/${post.userId._id}/?tab=post`}
               scroll={false}
               className="font-semibold text-sm hover:text-[#A8A8A8]"
@@ -107,7 +108,7 @@ const PostCard = ({ post, mutate }: Props) => {
             </div>
           </div>
         </div>
-        <button>
+        <button name="opt-button">
           <HiOutlineDotsVertical size="23" />
         </button>
       </div>
@@ -159,12 +160,18 @@ const PostCard = ({ post, mutate }: Props) => {
         </div>
         <HiOutlineBookmark size="23" className="text-white" />
       </div>
-      <Link href={`${pathName}/?like=${post._id}`} scroll={false} className="text-sm font-semibold px-3 md:px-0">
+      <Link
+        aria-label="link"
+        href={`${pathName}/?like=${post._id}`}
+        scroll={false}
+        className="text-sm font-semibold px-3 md:px-0"
+      >
         {post.totalLike} {post.totalLike > 1 ? 'Likes' : 'like'}
       </Link>
       <div className="px-3 md:px-0">
         <div className="relative group inline">
           <Link
+            aria-label="link"
             href={`/${post.userId._id}/?tab=post`}
             scroll={false}
             className="font-semibold text-sm pr-1 hover:text-[#A8A8A8]"
@@ -177,7 +184,12 @@ const PostCard = ({ post, mutate }: Props) => {
         </div>
         <span className="text-sm font-normal pl-1">{post.caption}</span>
       </div>
-      <Link href={`${pathName}/?p=${post._id}`} scroll={false} className="px-3 md:px-0 text-sm text-[#A8A8A8] pt-1">
+      <Link
+        aria-label="link"
+        href={`${pathName}/?p=${post._id}`}
+        scroll={false}
+        className="px-3 md:px-0 text-sm text-[#A8A8A8] pt-1"
+      >
         View all {post.totalComment} {post.totalComment > 1 ? 'comments' : 'comment'}
       </Link>
       <div className="flex items-center px-3 md:px-0 pt-2">
@@ -188,7 +200,7 @@ const PostCard = ({ post, mutate }: Props) => {
         <button className="text-xs font-semibold">See translation</button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PostCard;
+export default PostCard
