@@ -20,7 +20,7 @@ const AllPost = () => {
   if (isLoading || !session) return <PostSkeleton />
 
   return (
-    <div className="mt-1 md:max-w-[67%] md:mx-auto md:mt-10 overflow-y-hidden">
+    <div className="mt-1 md:max-w-[67%] md:mx-auto mb-12 md:mt-10 overflow-y-hidden">
       <UploadingLoad />
       {posts?.map((post, index) => (
         <div key={post._id}>
