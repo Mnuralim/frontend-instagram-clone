@@ -76,16 +76,16 @@ const BodyProfile = ({ user, userSessionId, handleFollowUser }: Props) => {
           )}
           <div className="flex flex-wrap gap-3 md:gap-10">
             <div className="text-center flex flex-col md:flex-row md:items-center md:gap-1">
-              <h3 className="font-bold text-sm md:font-semibold">{user?.totalPost}</h3>
-              <p className="text-sm">{user?.totalPost <= 1 ? 'Post' : 'Posts'}</p>
+              <h3 className="font-bold text-lg md:text-sm md:font-semibold">{user?.totalPost}</h3>
+              <p className="md:text-sm">{user?.totalPost <= 1 ? 'Post' : 'Posts'}</p>
             </div>
             <div className="text-center flex flex-col md:flex-row md:items-center md:gap-1">
-              <h3 className="font-bold text-sm md:font-semibold">{user?.totalFollower}</h3>
-              <p className="text-sm">{user?.totalFollower <= 1 ? 'Follower' : 'Followers'}</p>
+              <h3 className="font-bold text-lg md:text-sm md:font-semibold">{user?.totalFollower}</h3>
+              <p className="md:text-sm">{user?.totalFollower <= 1 ? 'Follower' : 'Followers'}</p>
             </div>
             <div className="text-center flex flex-col md:flex-row md:items-center md:gap-1">
-              <h3 className="font-bold text-sm md:font-semibold">{user?.totalFollowing}</h3>
-              <p className="text-sm">{user?.totalFollowing <= 1 ? 'Following' : 'Followings'}</p>
+              <h3 className="font-bold text-lg md:text-sm md:font-semibold">{user?.totalFollowing}</h3>
+              <p className="md:text-sm">{user?.totalFollowing <= 1 ? 'Following' : 'Followings'}</p>
             </div>
           </div>
           <div className="hidden mt-3 flex-col gap-2 md:flex">
