@@ -17,7 +17,7 @@ const AllPost = () => {
     mutate,
   }: { post: IPost[]; isLoading: boolean; mutate: KeyedMutator<any> } = usePost(token as string)
 
-  if (isLoading || !session) return <PostSkeleton />
+  if (isLoading || !session) return <PostSkeleton numberOfBlocks={10} />
 
   return (
     <div className="mt-1 md:max-w-[67%] md:mx-auto mb-12 md:mt-10 overflow-y-hidden">

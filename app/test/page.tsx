@@ -7,7 +7,7 @@ import React from 'react'
 const Page = () => {
   return (
     <div className="w-full md:max-w-[67%] mx-auto">
-      <SuggestionSkeleton />
+      <PostSkeleton numberOfBlocks={10} />
     </div>
   )
 }
