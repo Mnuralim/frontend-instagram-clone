@@ -19,13 +19,15 @@ const BodyProfile = ({ user, userSessionId, handleFollowUser }: Props) => {
     <div>
       <div className="flex items-center justify-between gap-3 w-full mt-7 px-3 md:px-8">
         <div className="md:w-1/3">
-          <Image
-            src={user?.profile.imageProfile}
-            alt={user?.username || 'profile'}
-            width={8000}
-            height={8000}
-            className="object-center w-20 h-20 rounded-full md:w-36 md:h-36"
-          />
+          <div className="min-w-[81px] md:min-w-[144px]">
+            <Image
+              src={user?.profile.imageProfile}
+              alt={user?.username || 'profile'}
+              width={8000}
+              height={8000}
+              className="object-center w-20 h-20 rounded-full md:w-36 md:h-36"
+            />
+          </div>
         </div>
         <div className="md:w-2/3 self-center">
           {isMyProfile ? (
@@ -72,18 +74,18 @@ const BodyProfile = ({ user, userSessionId, handleFollowUser }: Props) => {
               </button>
             </div>
           )}
-          <div className="flex gap-8 md:gap-10">
+          <div className="flex flex-wrap gap-3 md:gap-10">
             <div className="text-center flex flex-col md:flex-row md:items-center md:gap-1">
-              <h3 className="font-bold text-lg md:text-sm md:font-semibold">{user?.totalPost}</h3>
-              <p className="md:text-sm">{user?.totalPost <= 1 ? 'Post' : 'Posts'}</p>
+              <h3 className="font-bold text-sm md:font-semibold">{user?.totalPost}</h3>
+              <p className="text-sm">{user?.totalPost <= 1 ? 'Post' : 'Posts'}</p>
             </div>
             <div className="text-center flex flex-col md:flex-row md:items-center md:gap-1">
-              <h3 className="font-bold text-lg md:text-sm md:font-semibold">{user?.totalFollower}</h3>
-              <p className="md:text-sm">{user?.totalFollower <= 1 ? 'Follower' : 'Followers'}</p>
+              <h3 className="font-bold text-sm md:font-semibold">{user?.totalFollower}</h3>
+              <p className="text-sm">{user?.totalFollower <= 1 ? 'Follower' : 'Followers'}</p>
             </div>
             <div className="text-center flex flex-col md:flex-row md:items-center md:gap-1">
-              <h3 className="font-bold text-lg md:text-sm md:font-semibold">{user?.totalFollowing}</h3>
-              <p className="md:text-sm">{user?.totalFollowing <= 1 ? 'Following' : 'Followings'}</p>
+              <h3 className="font-bold text-sm md:font-semibold">{user?.totalFollowing}</h3>
+              <p className="text-sm">{user?.totalFollowing <= 1 ? 'Following' : 'Followings'}</p>
             </div>
           </div>
           <div className="hidden mt-3 flex-col gap-2 md:flex">

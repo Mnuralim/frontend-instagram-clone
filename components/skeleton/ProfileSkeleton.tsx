@@ -3,6 +3,13 @@ import React from 'react'
 const ProfileSkeleton = () => {
   return (
     <div className="w-full md:max-w-[67%] mx-auto">
+      <div className="w-full mt-3 justify-between items-center flex px-3 md:hidden">
+        <div className="w-10">
+          <div className="bg-gray-500 h-4 w-4 animate-pulse rounded"></div>
+        </div>
+        <div className="bg-gray-500 h-4 w-20 animate-pulse rounded"></div>
+        <div className="w-10"></div>
+      </div>
       <div className="flex items-center justify-between gap-3 w-full mt-7 px-3 md:px-8">
         <div className="md:w-1/3">
           <div className="w-20 h-20 bg-gray-500 rounded-full animate-pulse md:w-36 md:h-36"></div>
