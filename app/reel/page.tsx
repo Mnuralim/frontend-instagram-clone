@@ -29,12 +29,12 @@ const Page = () => {
   // }, [pathName]);
 
   return (
-    <section className="h-screen items-center flex  min-h-screen md:max-w-[34%] md:mx-auto">
+    <section className="h-screen fixed top-0 flex items-center md:static md:max-w-[34%] md:mx-auto">
       <Swiper
         direction={'vertical'}
         modules={[Pagination, Mousewheel]}
         mousewheel={true}
-        className="w-full md:w-auto h-full grid grid-cols-1 gap-y-3 md:h-[90%]"
+        className="w-full md:w-auto h-full  md:h-[90%]"
       >
         {posts?.map(
           (post) =>

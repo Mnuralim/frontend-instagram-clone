@@ -1,7 +1,7 @@
-import Logo from "@/components/IgLogo";
-import React from "react";
-import { AiOutlineHeart } from "react-icons/ai";
-import { PiMessengerLogoBold } from "react-icons/pi";
+import Logo from '@/components/IgLogo'
+import React from 'react'
+import { AiOutlineHeart } from 'react-icons/ai'
+import { PiMessengerLogoBold } from 'react-icons/pi'
 
 const HomeHeader = () => {
   return (
@@ -12,7 +12,7 @@ const HomeHeader = () => {
         <PiMessengerLogoBold size="24" />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default HomeHeader;
+export default HomeHeader

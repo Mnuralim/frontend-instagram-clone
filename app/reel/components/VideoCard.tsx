@@ -43,8 +43,10 @@ const VideoCard = ({ post }: Props) => {
       const entry = entries[0]
       if (entry.isIntersecting) {
         vidRef.current?.play()
+        setIsPlaying(true)
       } else {
         vidRef.current?.pause()
+        setIsPlaying(false)
       }
     }, options)
 
