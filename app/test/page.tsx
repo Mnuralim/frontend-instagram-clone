@@ -1,3 +1,5 @@
+import DetailPostSkeleton from '@/components/skeleton/DetailPostSkeleton'
+import ExploreSkeleton from '@/components/skeleton/ExploreSkeleton'
 import PostSkeleton from '@/components/skeleton/PostSkeleton'
 import ProfileSkeleton from '@/components/skeleton/ProfileSkeleton'
 import ReelSkeleton from '@/components/skeleton/ReelSkeleton'
@@ -7,7 +9,7 @@ import React from 'react'
 const Page = () => {
   return (
     <div className="w-full md:max-w-[67%] mx-auto">
-      <PostSkeleton numberOfBlocks={10} />
+      <ProfileSkeleton />
     </div>
   )
 }

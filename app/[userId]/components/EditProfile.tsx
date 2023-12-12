@@ -4,7 +4,7 @@ import { useUser } from '@/utils/swr'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { MouseEventHandler, useRef, useState } from 'react'
 import { AiOutlineClose, AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -24,6 +24,13 @@ const EditProfile = () => {
   const [bio, setBio] = useState<string>(user.profile.bio)
   const [loading, setLoading] = useState<boolean>(false)
   const router = useRouter()
+  const overLay = useRef<HTMLElement>(null)
+
+  const backButton: MouseEventHandler = (e) => {
+    if (e.target === overLay.current) {
+      router.back()
+    }
+  }
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -68,7 +75,11 @@ const EditProfile = () => {
   }
 
   return (
-    <section className="fixed bg-black inset-0 top-0 left-0 z-50 flex justify-center items-center md:bg-opacity-50">
+    <section
+      ref={overLay}
+      onClick={backButton}
+      className="fixed bg-black inset-0 top-0 left-0 z-50 flex justify-center items-center md:bg-opacity-50"
+    >
       <div className="absolute right-4 top-4 hidden md:block">
         <AiOutlineClose onClick={() => router.back()} size="23" color="#fff" className="cursor-pointer" />
       </div>

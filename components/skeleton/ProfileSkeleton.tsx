@@ -46,6 +46,30 @@ const ProfileSkeleton = () => {
         <div className="w-14 h-14 flex justify-center items-center rounded-full bg-gray-500 animate-pulse md:w-[87px] md:h-[87px]"></div>
         <div className="w-14 h-14 flex justify-center items-center rounded-full bg-gray-500 animate-pulse md:w-[87px] md:h-[87px]"></div>
       </div>
+      <div className="grid grid-cols-3 w-full">
+        <div className={`flex justify-center items-center py-3`}>
+          <div className="h-7 w-7 rounded bg-gray-500 animate-pulse"></div>
+        </div>
+        <div className={` flex justify-center items-center py-3`}>
+          <div className="h-7 w-7 rounded bg-gray-500 animate-pulse"></div>
+        </div>
+        <div className={`flex justify-center items-center py-3`}>
+          <div className="h-7 w-7 rounded bg-gray-500 animate-pulse"></div>
+        </div>
+      </div>
+      <div className="flex flex-col pt-1">
+        <div className="grid grid-cols-3 gap-[2px]">
+          <div className="aspect-square">
+            <div className="w-full h-full bg-gray-500 animate-pulse rounded"></div>
+          </div>
+          <div className="aspect-square">
+            <div className="w-full h-full bg-gray-500 animate-pulse rounded"></div>
+          </div>
+          <div className="aspect-square">
+            <div className="w-full h-full bg-gray-500 animate-pulse rounded"></div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

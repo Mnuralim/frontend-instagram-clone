@@ -1,58 +1,56 @@
-"use client";
+'use client'
 
-import React, { useState } from "react";
-import ButtonBack from "./ButtonBack";
-import SearchList from "./SearchList";
-import { useHistory, useUser } from "@/utils/swr";
-import { useSession } from "next-auth/react";
-import { KeyedMutator } from "swr";
+import React, { useState } from 'react'
+import ButtonBack from './ButtonBack'
+import SearchList from './SearchList'
+import { useHistory, useUser } from '@/utils/swr'
+import { useSession } from 'next-auth/react'
+import { KeyedMutator } from 'swr'
 
-import { addToHistory, clearHistory, deleteHistory } from "@/utils/fetch";
-import { useRouter } from "next/navigation";
+import { addToHistory, clearHistory, deleteHistory } from '@/utils/fetch'
+import { useRouter } from 'next/navigation'
 
 const SearchMenu = () => {
-  const [username, setUsername] = useState<string>("");
-  const router = useRouter();
+  const [username, setUsername] = useState<string>('')
+  const router = useRouter()
 
-  const { data: session } = useSession();
-  const token = session?.user.token;
+  const { data: session } = useSession()
+  const token = session?.user.token
   const {
     user: users,
     mutate,
     isLoading,
   }: { user: IUser[]; isLoading: boolean; mutate: KeyedMutator<any> } = useUser(token as string, undefined, {
     username: username,
-  });
+  })
   const {
     histories,
     mutate: historyMutate,
     isLoading: isLoadingHistory,
-  }: { histories: IHistory[]; isLoading: boolean; mutate: KeyedMutator<any> } = useHistory(token as string);
+  }: { histories: IHistory[]; isLoading: boolean; mutate: KeyedMutator<any> } = useHistory(token as string)
 
   const handleAddToHistory = async (id: string) => {
-    router.push(`/${id}/?tab=post`, { scroll: false });
-    const response = await addToHistory(token as string, id);
+    router.push(`/${id}/?tab=post`, { scroll: false })
+    const response = await addToHistory(token as string, id)
     if (response?.ok) {
-      mutate();
-      historyMutate();
+      mutate()
+      historyMutate()
     }
-  };
+  }
 
   const handleDeleteHistory = async (id: string) => {
-    const response = await deleteHistory(token as string, id);
+    const response = await deleteHistory(token as string, id)
     if (response?.ok) {
-      historyMutate();
+      historyMutate()
     }
-  };
+  }
 
   const handleClearHistory = async () => {
-    const response = await clearHistory(token as string);
+    const response = await clearHistory(token as string)
     if (response?.ok) {
-      historyMutate();
+      historyMutate()
     }
-  };
-
-  // if (!token) return <p>Loading</p>;
+  }
 
   return (
     <div className={`h-full w-full bg-black md:w-[395px] `}>
@@ -96,7 +94,7 @@ const SearchMenu = () => {
             />
           ))}
     </div>
-  );
-};
+  )
+}
 
-export default SearchMenu;
+export default SearchMenu

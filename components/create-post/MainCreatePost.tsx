@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { MouseEventHandler, useEffect, useRef, useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { useRouter } from 'next/navigation'
 import { MdCloudUpload } from 'react-icons/md'
@@ -23,6 +23,7 @@ const MainCreatePost = () => {
   const { data: session } = useSession()
   const user = session?.user
   const { mutate } = usePost(user?.token as string)
+  const overLay = useRef<HTMLElement>(null)
 
   useEffect(() => {
     document.body.classList.add('modal-open')
@@ -31,6 +32,12 @@ const MainCreatePost = () => {
       document.body.classList.remove('modal-open')
     }
   }, [])
+
+  const backButton: MouseEventHandler = (e) => {
+    if (e.target === overLay.current) {
+      router.back()
+    }
+  }
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -108,7 +115,11 @@ const MainCreatePost = () => {
   }
 
   return (
-    <section className="fixed bg-black inset-0 top-0 left-0 z-50 flex justify-center items-center md:bg-opacity-50">
+    <section
+      ref={overLay}
+      onClick={backButton}
+      className="fixed bg-black inset-0 top-0 left-0 z-50 flex justify-center items-center md:bg-opacity-50"
+    >
       <div className="absolute right-4 top-4 hidden md:block">
         <AiOutlineClose
           name="button-back"
