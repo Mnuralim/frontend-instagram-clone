@@ -2,6 +2,9 @@ import React, { MouseEventHandler, useEffect, useRef, useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { useRouter } from 'next/navigation'
 import { MdCloudUpload } from 'react-icons/md'
+import { MdOutlineLocationOn } from 'react-icons/md'
+import { GoPerson } from 'react-icons/go'
+import { MdArrowForwardIos } from 'react-icons/md'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 import ButtonBack from '../ButtonBack'
@@ -114,6 +117,15 @@ const MainCreatePost = () => {
     }
   }
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('https://api.mapbox.com/search/geocode/v6/forward?q=cilacap')
+      const data = await response.json()
+      console.log(data)
+    }
+    fetchData()
+  }, [])
+
   return (
     <section
       ref={overLay}
@@ -189,8 +201,20 @@ const MainCreatePost = () => {
               </div>
             </div>
           </div>
-          <h3 className="px-3 py-2 border-b border-t border-white border-opacity-20">Tag people</h3>
-          <h3 className="px-3 py-2 border-b  border-white border-opacity-20">Add location</h3>
+          <div className="flex items-center justify-between px-3 py-2 border-b border-t border-white border-opacity-20">
+            <div className="flex items-center gap-2">
+              <MdOutlineLocationOn size="21" className="text-[#a6a6a6] md:text-white" />
+              <h3>Add location</h3>
+            </div>
+            <MdArrowForwardIos />
+          </div>
+          <div className="flex items-center justify-between px-3 py-2 border-b border-white border-opacity-20">
+            <div className="flex items-center gap-2">
+              <GoPerson size="21" className="text-[#a6a6a6] md:text-white" />
+              <h3>Tag people</h3>
+            </div>
+            <MdArrowForwardIos />
+          </div>
         </form>
       </div>
       <ToastContainer />

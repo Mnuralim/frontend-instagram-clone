@@ -12,21 +12,21 @@ const PostSkeleton = ({ numberOfBlocks }: Props) => {
           <div className="max-w-screen-lg mx-auto">
             <div className="bg-black mb-4 rounded-md shadow-md animate-pulse">
               <div className="flex items-center mb-4">
-                <div className="h-10 w-10 bg-gray-600 rounded-full mr-2"></div>
-                <div className="h-4 w-20 bg-gray-600 rounded-full"></div>
+                <div className="h-10 w-10 bg-[#151515] rounded-full mr-2"></div>
+                <div className="h-4 w-20 bg-[#151515] rounded-full"></div>
               </div>
 
-              <div className="h-96 bg-gray-600 mb-4"></div>
+              <div className="h-96 bg-[#151515] mb-4"></div>
 
               <div className="flex items-center gap-2">
-                <div className="h-8 w-8 bg-gray-600 rounded-full"></div>
-                <div className="h-8 w-8 bg-gray-600 rounded-full"></div>
-                <div className="h-8 w-8 bg-gray-600 rounded-full"></div>
+                <div className="h-8 w-8 bg-[#151515] rounded-full"></div>
+                <div className="h-8 w-8 bg-[#151515] rounded-full"></div>
+                <div className="h-8 w-8 bg-[#151515] rounded-full"></div>
               </div>
-              <div className="h-4 w-20 bg-gray-600 rounded mt-4"></div>
-              <div className="h-10 w-full bg-gray-600 rounded mt-4"></div>
-              <div className="h-4 w-28 bg-gray-600 rounded mt-4"></div>
-              <div className="h-4 w-32 bg-gray-600 rounded mt-4"></div>
+              <div className="h-4 w-20 bg-[#151515] rounded mt-4"></div>
+              <div className="h-10 w-full bg-[#151515] rounded mt-4"></div>
+              <div className="h-4 w-28 bg-[#151515] rounded mt-4"></div>
+              <div className="h-4 w-32 bg-[#151515] rounded mt-4"></div>
             </div>
           </div>
         </div>
