@@ -25,7 +25,7 @@ const MainCreatePost = () => {
   const router = useRouter()
   const { data: session } = useSession()
   const user = session?.user
-  const { mutate } = usePost(user?.token as string)
+  const { mutate,isLoading } = usePost(user?.token as string)
   const overLay = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -116,15 +116,6 @@ const MainCreatePost = () => {
       throw new Error('error')
     }
   }
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('https://api.mapbox.com/search/geocode/v6/forward?q=cilacap')
-      const data = await response.json()
-      console.log(data)
-    }
-    fetchData()
-  }, [])
 
   return (
     <section

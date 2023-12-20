@@ -40,11 +40,12 @@ export const usePost = (token: string, id?: string, query?: IPostQuery) => {
   if (query?.limit) {
     limitQuery = query.limit;
   }
-  const { data, isLoading, mutate } = useSWR(token ? (id ? [`${process.env.API_URL}/posts/${id}`, token] : [`${process.env.API_URL}/posts/?author=${authorQuery}&limit=${limitQuery}`, token]) : null, ([url, token]) => fetcher(url, token));
+  const { data, isLoading, mutate, isValidating } = useSWR(token ? (id ? [`${process.env.API_URL}/posts/${id}`, token] : [`${process.env.API_URL}/posts/?author=${authorQuery}&limit=${limitQuery}`, token]) : null, ([url, token]) => fetcher(url, token));
   return {
     post: id ? data?.data?.post : data?.data?.posts,
     isLoading,
     mutate,
+    isValidating
   };
 };
 

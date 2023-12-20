@@ -15,7 +15,8 @@ const AllPost = () => {
     post: posts,
     isLoading,
     mutate,
-  }: { post: IPost[]; isLoading: boolean; mutate: KeyedMutator<any> } = usePost(token as string)
+    isValidating,
+  }: { post: IPost[]; isLoading: boolean; mutate: KeyedMutator<any>; isValidating: boolean } = usePost(token as string)
 
   if (isLoading || !session) return <PostSkeleton numberOfBlocks={10} />
 
@@ -24,7 +25,7 @@ const AllPost = () => {
       <UploadingLoad />
       {posts?.map((post, index) => (
         <div key={post._id}>
-          <PostCard post={post} mutate={mutate} />
+          <PostCard post={post} mutate={mutate} isValidating={isValidating} />
           {index === 0 && (
             <div className="md:hidden">
               <SuggestionFollow />

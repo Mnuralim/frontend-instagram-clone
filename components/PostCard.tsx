@@ -18,9 +18,10 @@ import DateConv from './DateConv'
 interface Props {
   post: IPost
   mutate: KeyedMutator<any>
+  isValidating: boolean
 }
 
-const PostCard = ({ post, mutate }: Props) => {
+const PostCard = ({ post, mutate, isValidating }: Props) => {
   const vidRef = useRef<HTMLVideoElement>(null)
   const videoContainerRef = useRef<HTMLDivElement>(null)
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
@@ -76,7 +77,7 @@ const PostCard = ({ post, mutate }: Props) => {
       } else {
         vidRef.current.play()
       }
-      setIsPlaying(!isPlaying)
+      setIsPlaying((prev) => !prev)
     }
   }
 
@@ -142,15 +143,20 @@ const PostCard = ({ post, mutate }: Props) => {
       )}
       <div className="flex justify-between items-center py-2 px-3 md:px-0">
         <div className="flex items-center gap-6">
-          {post.alreadyLike ? (
-            <AiFillHeart onClick={handleLikePost} size="23" color="#FF3040" className="text-[#FF3040] cursor-pointer" />
-          ) : (
-            <AiOutlineHeart
-              onClick={handleLikePost}
-              size="23"
-              className="text-white hover:text-[#A8A8A8] cursor-pointer"
-            />
-          )}
+          <button onClick={handleLikePost}>
+            {isValidating ? (
+              post.alreadyLike ? (
+                <AiOutlineHeart size="23" className="text-white hover:text-[#A8A8A8] cursor-pointer" />
+              ) : (
+                <AiOutlineHeart size="23" className="text-white hover:text-[#A8A8A8] cursor-pointer" />
+              )
+            ) : post.alreadyLike ? (
+              <AiFillHeart size="23" color="#FF3040" className="text-[#FF3040] cursor-pointer" />
+            ) : (
+              <AiOutlineHeart size="23" className="text-white hover:text-[#A8A8A8] cursor-pointer" />
+            )}
+          </button>
+
           <IoChatbubbleOutline
             onClick={() => router.push(`${pathName}/?p=${post._id}`, { scroll: false })}
             size="22"
@@ -166,7 +172,7 @@ const PostCard = ({ post, mutate }: Props) => {
         scroll={false}
         className="text-sm font-semibold px-3 md:px-0"
       >
-        {post.totalLike} {post.totalLike > 1 ? 'Likes' : 'like'}
+        {isValidating && post.alreadyLike ? post.totalLike - 1 : post.totalLike} {post.totalLike > 1 ? 'Likes' : 'like'}
       </Link>
       <div className="px-3 md:px-0">
         <div className="relative group inline">
