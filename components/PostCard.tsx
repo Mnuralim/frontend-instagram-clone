@@ -91,7 +91,7 @@ const PostCard = ({ post, mutate, isValidating }: Props) => {
   }
 
   return (
-    <div className="border-b  border-slate-400 border-opacity-0 md:border-opacity-25 pb-20">
+    <div className="border-b border-slate-400 border-opacity-0 md:border-opacity-25 pb-5">
       <div className="flex justify-between items-center px-2 md:px-0 pt-5">
         <div className="flex items-center gap-3">
           <Avatar src={post.userId.profile.imageProfile} userId={post.userId._id} className="w-10 h-10" story={true} />
