@@ -1,6 +1,4 @@
 import React from 'react'
-import { AiOutlineClose } from 'react-icons/ai'
-import { Comment } from '../detail-post/Comment'
 
 const DetailPostSkeleton = () => {
   return (
