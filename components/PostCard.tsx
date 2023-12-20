@@ -91,7 +91,7 @@ const PostCard = ({ post, mutate, isValidating }: Props) => {
   }
 
   return (
-    <div className="border-b border-slate-400 border-opacity-0 md:border-opacity-25 pb-5">
+    <div className="border-b  border-slate-400 border-opacity-0 md:border-opacity-25 pb-20">
       <div className="flex justify-between items-center px-2 md:px-0 pt-5">
         <div className="flex items-center gap-3">
           <Avatar src={post.userId.profile.imageProfile} userId={post.userId._id} className="w-10 h-10" story={true} />
@@ -116,14 +116,14 @@ const PostCard = ({ post, mutate, isValidating }: Props) => {
       {post.type === 'post' ? (
         <div
           onDoubleClick={handleLikePost}
-          className="aspect-square w-full mt-2 md:rounded border border-slate-400 border-opacity-0 md:border-opacity-25"
+          className="aspect-[4/5] w-full mt-2 flex items-center md:rounded border border-slate-400 border-opacity-0 md:border-opacity-25"
         >
           <Image
             src={post.media}
             alt="post"
-            width={5000}
-            height={5000}
-            className="object-cover w-full h-full md:rounded"
+            width={500}
+            height={500}
+            className="object-cover w-full h-auto object-center md:rounded"
           />
         </div>
       ) : (

@@ -70,14 +70,14 @@ const DetailPost = ({ postId }: Props) => {
         <AiOutlineClose onClick={() => router.back()} size="23" color="#fff" className="cursor-pointer" />
       </div>
       <div className="w-full h-full z-10 relative grid grid-cols-1 md:p-6 md:max-w-[78%] md:grid-cols-2">
-        <div className={`hidden md:block overflow-hidden bg-black`}>
+        <div className={`hidden md:flex items-center justify-center overflow-hidden bg-black`}>
           {post.type === 'post' && (
             <Image
               width={50000}
               height={50000}
               alt={post.media}
               src={post.media}
-              className="object-fill w-full h-full"
+              className="object-cover object-center w-auto h-auto"
             />
           )}
           {post.type === 'reel' && (
