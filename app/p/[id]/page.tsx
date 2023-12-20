@@ -14,12 +14,12 @@ interface Params {
 
 const Page = ({ params }: Params) => {
   const { data: session } = useSession()
-  const { post, isLoading, mutate } = usePost(session?.user.token as string, params.id)
+  const { post, isLoading, mutate, isValidating } = usePost(session?.user.token as string, params.id)
   if (!session || isLoading) return <PostSkeleton numberOfBlocks={1} />
   return (
     <section>
       <Header />
-      <PostCard mutate={mutate} post={post} />
+      <PostCard mutate={mutate} post={post} isValidating={isValidating} />
     </section>
   )
 }
