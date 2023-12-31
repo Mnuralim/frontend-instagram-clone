@@ -123,7 +123,7 @@ const PostCard = ({ post, mutate, isValidating }: Props) => {
             alt="post"
             width={500}
             height={500}
-            className="object-cover w-full h-auto object-center md:rounded"
+            className="object-cover  object-center md:rounded"
           />
         </div>
       ) : (

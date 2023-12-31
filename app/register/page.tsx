@@ -27,9 +27,7 @@ const Register = () => {
         toast.success('Register successfully', {
           position: toast.POSITION.TOP_RIGHT,
         })
-        setInterval(() => {
-          router.push('/login')
-        }, 2000)
+        router.push('/login')
       } else {
         setIsLoading(false)
         toast.error(data.message, {
@@ -42,7 +40,7 @@ const Register = () => {
   }
 
   return (
-    <section className="flex justify-between flex-col items-center h-screen w-full mx-auto md:max-w-[33%]">
+    <section className="flex fixed top-0 left-1/2 transform -translate-x-1/2 justify-between flex-col items-center w-full h-screen md:max-w-[33%]">
       <div className="pt-3"></div>
       <div className="flex flex-col w-5/6 gap-3">
         <center>

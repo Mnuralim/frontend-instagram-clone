@@ -37,7 +37,7 @@ const SideBar = () => {
   return (
     <aside
       className={`hidden fixed left-0 top-0 h-screen z-20 w-full border-r border-r-slate-400 border-opacity-20 max-w-[16%]  ${
-        pathName !== '/login' ? 'md:block' : 'md:hidden'
+        pathName !== '/login' && pathName !== '/register' ? 'md:block' : 'md:hidden'
       }`}
     >
       <Logo
