@@ -35,7 +35,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Suspense>
-      <AppContext.Provider value={{ state, dispatch }}>{children}</AppContext.Provider>;
+      <AppContext.Provider value={{ state, dispatch }}>{children}</AppContext.Provider>
     </Suspense>
   )
 }
