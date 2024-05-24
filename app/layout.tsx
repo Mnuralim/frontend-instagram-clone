@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { getServerSession } from 'next-auth'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import NextAuthProvider from './Provider'

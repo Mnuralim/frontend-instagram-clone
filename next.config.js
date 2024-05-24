@@ -8,8 +8,18 @@ const nextConfig = {
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   },
   images: {
-    domains: ['res.cloudinary.com', 'ik.imagekit.io', 'lh3.googleusercontent.com'],
+    remotePatterns: [
+      {
+        hostname: 'res.cloudinary.com',
+      },
+      {
+        hostname: 'ik.imagekit.io',
+      },
+      {
+        hostname: 'lh3.googleusercontent.com',
+      },
+    ],
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
