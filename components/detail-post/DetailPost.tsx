@@ -69,7 +69,7 @@ const DetailPost = ({ postId }: Props) => {
       <div className="absolute right-4 top-4 hidden md:block">
         <AiOutlineClose onClick={() => router.back()} size="23" color="#fff" className="cursor-pointer" />
       </div>
-      <div className="w-full h-full z-10 relative grid grid-cols-1 md:p-6 md:max-w-[78%] md:grid-cols-2">
+      <div className="w-full h-full z-10 relative grid grid-cols-1 md:p-6 md:max-w-[90%]  lg:max-w-[78%] md:grid-cols-2">
         <div className={`hidden md:flex items-center justify-center overflow-hidden bg-black`}>
           {post.type === 'post' && (
             <Image

@@ -1,44 +1,12 @@
-'use client'
-import React, { useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import RegisterForm from './components/RegisterForm'
-import { register } from '@/utils/fetch'
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import ButtonLoginGoogle from '../login/components/ButtonLoginGoogle'
 
 const Register = () => {
-  const [username, setUsername] = useState<string>('')
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-
-  const router = useRouter()
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    try {
-      const response = await register(email, password, username)
-      const data = await response?.json()
-      if (response?.ok) {
-        setIsLoading(false)
-        toast.success('Register successfully', {
-          position: toast.POSITION.TOP_RIGHT,
-        })
-        router.push('/login')
-      } else {
-        setIsLoading(false)
-        toast.error(data.message, {
-          position: toast.POSITION.TOP_RIGHT,
-        })
-      }
-    } catch (error) {
-      throw new Error('Error')
-    }
-  }
-
   return (
     <section className="flex fixed top-0 left-1/2 transform -translate-x-1/2 justify-between flex-col items-center w-full h-screen md:max-w-[33%]">
       <div className="pt-3"></div>
@@ -52,12 +20,7 @@ const Register = () => {
             className="white-logo pt-1 object-fill w-[193px] h-[59px]"
           />
         </center>
-        <RegisterForm
-          handleChangeValue={{ setEmail, setPassword, setUsername }}
-          handleSubmit={handleSubmit}
-          inputValue={{ email, password, username }}
-          isLoading={isLoading}
-        />
+        <RegisterForm />
         <p className="text-sm text-center text-[#A8A8A8]">
           Have problems?{' '}
           <Link aria-label="link" href={'#'} className="text-slate-300 font-semibold">

@@ -5,6 +5,7 @@ import { AiOutlineHeart } from 'react-icons/ai'
 import { Collapse } from 'react-collapse'
 import DateConv from '../DateConv'
 import Avatar from '../Avatar'
+import { renderTextWithHighlight } from '@/utils/render-text-with-highlight'
 
 interface Props {
   comment: IComment
@@ -28,12 +29,14 @@ const CommentList = ({ comment, open, togle, chooseComment }: Props) => {
         </div>
         <div className="flex flex-col gap-[1px] w-full">
           <p className="text-xs font-semibold flex">
-            <p className="hover:text-[#A8A8A8]">{comment?.user.username}</p>
+            <Link href={`/${comment.user._id}?tab=post`} className="hover:text-[#A8A8A8]">
+              {comment?.user.username}
+            </Link>
             <span className="text-[#a8a8a8] pl-2 text-xs">
               <DateConv createdAt={comment?.createdAt} />
             </span>
           </p>
-          <p className="text-sm">{comment?.text}</p>
+          <p className="text-sm">{renderTextWithHighlight(comment?.text)}</p>
           <div className="flex text-xs gap-4 text-[#a8a8a8]">
             <button name="choose-comment" onClick={() => chooseComment(comment._id, comment.user.username)}>
               Reply
@@ -48,12 +51,14 @@ const CommentList = ({ comment, open, togle, chooseComment }: Props) => {
                     <Avatar src={c.user.profile.imageProfile} userId={c.user._id} story={false} className="w-9 h-9" />
                     <div className="flex flex-col gap-[1px] w-[80%]">
                       <p className="text-xs font-semibold flex">
-                        <p className="hover:text-[#A8A8A8]">{c.user.username}</p>
+                        <Link href={`/${c.user._id}?tab=post`} className="hover:text-[#A8A8A8]">
+                          {c.user.username}
+                        </Link>
                         <span className="text-[#a8a8a8] pl-2 text-xs">
                           <DateConv createdAt={comment?.createdAt} />
                         </span>
                       </p>
-                      <p className="text-sm">{c.text}</p>
+                      <p className="text-sm">{renderTextWithHighlight(c.text)}</p>
                     </div>
                   </div>
                   <div className="flex flex-col items-center gap-1 text-[#a8a8a8] absolute -right-[30px]">

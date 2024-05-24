@@ -83,7 +83,7 @@ const PostCard = ({ post, mutate, isValidating }: Props) => {
 
   const handleLikePost = async () => {
     try {
-      const response = await likePost(token as string, post._id)
+      await likePost(token as string, post._id)
       mutate()
     } catch (error) {
       throw new Error('Error')
@@ -116,21 +116,21 @@ const PostCard = ({ post, mutate, isValidating }: Props) => {
       {post.type === 'post' ? (
         <div
           onDoubleClick={handleLikePost}
-          className="aspect-[4/5] w-full mt-2 flex items-center md:rounded border border-slate-400 border-opacity-0 md:border-opacity-25"
+          className="aspect-[4/5] lg:cursor-pointer w-full mt-2 flex items-center md:rounded border border-slate-400 border-opacity-0 md:border-opacity-25"
         >
           <Image
             src={post.media}
             alt="post"
             width={500}
             height={500}
-            className="object-cover  object-center md:rounded"
+            className="object-cover w-full object-center md:rounded"
           />
         </div>
       ) : (
         <div
           onDoubleClick={handleLikePost}
           ref={videoContainerRef}
-          className="mt-2 aspect-[3/4] relative md:rounded border border-slate-400 border-opacity-0 md:border-opacity-25"
+          className="mt-2 aspect-[3/4] relative md:rounded lg:cursor-pointer border border-slate-400 border-opacity-0 md:border-opacity-25"
         >
           <video
             loop

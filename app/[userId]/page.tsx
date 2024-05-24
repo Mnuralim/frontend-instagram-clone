@@ -59,7 +59,7 @@ const Page = ({ params: { userId } }: Params) => {
   if (isLoadingUser || isLoadingPost || !session) return <ProfileSkeleton />
 
   return (
-    <section className="w-full md:max-w-[67%] mx-auto">
+    <section className="w-full md:max-w-[90%] lg:max-w-[67%] mx-auto">
       <HeaderProfile user={user} />
       <BodyProfile user={user} userSessionId={session?.user._id as string} handleFollowUser={handleFollowUser} />
       <MainPost posts={posts} />

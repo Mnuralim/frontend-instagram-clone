@@ -5,13 +5,13 @@ import SuggestionFollow from './components/SuggestionFollow'
 
 export default function Home() {
   return (
-    <section className="md:max-w-[84%] md:flex md:mx-auto">
-      <div className="md:w-[65%]">
+    <section className="lg:max-w-[84%] lg:flex lg:mx-auto">
+      <div className="lg:w-[65%]">
         <HomeHeader />
         <StorySlider />
         <AllPost />
       </div>
-      <div className="md:w-[35%] hidden md:block">
+      <div className="lg:w-[35%] hidden lg:block">
         <SuggestionFollow />
       </div>
     </section>

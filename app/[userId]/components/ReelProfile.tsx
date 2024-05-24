@@ -33,7 +33,7 @@ const ReelProfile = ({ posts }: Props) => {
             post.type === 'reel' && (
               <Link
                 aria-label="link"
-                href={screenSize <= 768 ? `/p/${post._id}` : `${pathName}/?post=tab&p=${post._id}`}
+                href={screenSize < 768 ? `/p/${post._id}` : `${pathName}/?post=tab&p=${post._id}`}
                 key={post._id}
                 className="aspect-[13/20] hover:opacity-50"
               >

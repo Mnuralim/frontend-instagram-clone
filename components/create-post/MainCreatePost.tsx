@@ -25,7 +25,7 @@ const MainCreatePost = () => {
   const router = useRouter()
   const { data: session } = useSession()
   const user = session?.user
-  const { mutate,isLoading } = usePost(user?.token as string)
+  const { mutate, isLoading } = usePost(user?.token as string)
   const overLay = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -132,7 +132,7 @@ const MainCreatePost = () => {
           className="cursor-pointer"
         />
       </div>
-      <div className="w-full h-full z-10 bg-black md:rounded-xl md:max-w-[35%] md:max-h-[80%] md:bg-[#262626]">
+      <div className="w-full h-full md:h-auto md:aspect-[4/3] z-10 bg-black md:rounded-xl lg:max-w-[30%] md:max-w-[55%] md:bg-[#262626]">
         <form onSubmit={handleSubmit}>
           <div className="flex justify-between items-center pt-4 px-3">
             <div className="w-5">

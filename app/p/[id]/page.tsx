@@ -17,7 +17,7 @@ const Page = ({ params }: Params) => {
   const { post, isLoading, mutate, isValidating } = usePost(session?.user.token as string, params.id)
   if (!session || isLoading) return <PostSkeleton numberOfBlocks={1} />
   return (
-    <section className="pb-20">
+    <section className="w-full md:max-w-[90%] lg:max-w-[67%] mx-auto">
       <Header />
       <PostCard mutate={mutate} post={post} isValidating={isValidating} />
     </section>

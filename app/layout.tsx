@@ -21,7 +21,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <NextAuthProvider>
           <AppProvider>
             <Header />
-            <main className={`md:relative w-full md:max-w-[84%] md:left-[16%] overflow-hidden`}>{children}</main>
+            <main
+              className={`md:relative w-full lg:max-w-[84%] md:left-[7%] md:max-w-[93%] lg:left-[16%] overflow-hidden`}
+            >
+              {children}
+            </main>
             <Modal />
           </AppProvider>
         </NextAuthProvider>

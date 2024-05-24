@@ -36,7 +36,7 @@ const PostProfile = ({ posts }: Props) => {
               <Link
                 aria-label="link"
                 key={post._id}
-                href={screenSize <= 768 ? `/p/${post._id}` : `${pathName}/?post=tab&p=${post._id}`}
+                href={screenSize < 768 ? `/p/${post._id}` : `${pathName}/?post=tab&p=${post._id}`}
                 scroll={false}
                 className="aspect-square hover:opacity-50"
               >

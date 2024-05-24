@@ -36,22 +36,29 @@ const SideBar = () => {
 
   return (
     <aside
-      className={`hidden fixed left-0 top-0 h-screen z-20 w-full border-r border-r-slate-400 border-opacity-20 max-w-[16%]  ${
+      className={`hidden fixed left-0 top-0 h-screen z-20 lg:w-full border-r border-r-slate-400 border-opacity-20 max-w-[16%] md:w-fit ${
         pathName !== '/login' && pathName !== '/register' ? 'md:block' : 'md:hidden'
       }`}
     >
       <Logo
-        className={`mt-8 mx-3 white-logo transform transition-all ease-in-out duration-500 ${
+        className={`mt-8 mx-3 white-logo md:hidden lg:block transform transition-all ease-in-out duration-500 ${
           searchTab ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
         }`}
       />
+      <BsInstagram
+        size="28"
+        className={`mt-12 mx-5 text-white md:block lg:hidden transform transition-all ease-in-out duration-500 ${
+          searchTab ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
+        }`}
+      />
+
       <BsInstagram
         size="28"
         className={`mx-6 -mt-7 white-logo transform transition-all ease-in-out duration-700 ${
           !searchTab ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
         }`}
       />
-      <div className="px-3 flex flex-col mt-10">
+      <div className="px-3 flex flex-col gap-4 mt-10">
         <Link aria-label="link" href={'/'} prefetch={false} scroll={false} className={sideBarClassName}>
           {pathName == '/' ? (
             <PiHouseFill size="28" className={sideBarIconClassName} />
@@ -59,7 +66,7 @@ const SideBar = () => {
             <PiHouse size="28" className="" />
           )}
           <p
-            className={`${pathName} === "/" ? "font-semibold" : "font-normal" ${
+            className={`md:hidden lg:block ${pathName} === "/" ? "font-semibold" : "font-normal" ${
               searchTab ? 'opacity-0' : 'opacity-100'
             }`}
           >
@@ -75,7 +82,7 @@ const SideBar = () => {
             )}
           </div>
           <p
-            className={`${pathName} === "/#search" ? "font-semibold" : "font-normal" ${
+            className={`md:hidden lg:block ${pathName} === "/#search" ? "font-semibold" : "font-normal" ${
               searchTab ? 'opacity-0' : 'opacity-100'
             }`}
           >
@@ -91,7 +98,7 @@ const SideBar = () => {
             )}
           </div>
           <p
-            className={`${pathName} === "/explore" ? "font-semibold" : "font-normal" ${
+            className={`md:hidden lg:block ${pathName} === "/explore" ? "font-semibold" : "font-normal" ${
               searchTab ? 'opacity-0' : 'opacity-100'
             }`}
           >
@@ -113,7 +120,7 @@ const SideBar = () => {
             )}
           </div>
           <p
-            className={`${pathName} === "/reel" ? "font-semibold" : "font-normal" ${
+            className={`md:hidden lg:block ${pathName} === "/reel" ? "font-semibold" : "font-normal" ${
               searchTab ? 'opacity-0' : 'opacity-100'
             }`}
           >
@@ -129,7 +136,7 @@ const SideBar = () => {
             )}
           </div>
           <p
-            className={`${pathName} === "/direct" ? "font-semibold" : "font-normal" ${
+            className={`md:hidden lg:block ${pathName} === "/direct" ? "font-semibold" : "font-normal" ${
               searchTab ? 'opacity-0' : 'opacity-100'
             }`}
           >
@@ -145,7 +152,7 @@ const SideBar = () => {
             )}
           </div>
           <p
-            className={`${pathName} === "/notification" ? "font-semibold" : "font-normal" ${
+            className={`md:hidden lg:block ${pathName} === "/notification" ? "font-semibold" : "font-normal" ${
               searchTab ? 'opacity-0' : 'opacity-100'
             }`}
           >
@@ -167,7 +174,7 @@ const SideBar = () => {
             )}
           </div>
           <p
-            className={`${pathName} === "/s" ? "font-semibold" : "font-normal" ${
+            className={`md:hidden lg:block ${pathName} === "/s" ? "font-semibold" : "font-normal" ${
               searchTab ? 'opacity-0' : 'opacity-100'
             }`}
           >
@@ -187,13 +194,13 @@ const SideBar = () => {
               width={28}
               height={28}
               alt="avatar"
-              className={`rounded-full object-cover w-7 h-7 border-2 border-white ${
+              className={`rounded-full object-cover w-8 h-8 border-2 border-white ${
                 pathName === `/${session?.user._id}` ? 'border-opacity-100' : 'border-opacity-0'
               }`}
             />
           </div>
           <p
-            className={`${pathName} === "/${session?.user._id}" ? "font-semibold" : "font-normal" ${
+            className={`md:hidden lg:block ${pathName} === "/${session?.user._id}" ? "font-semibold" : "font-normal" ${
               searchTab ? 'opacity-0' : 'opacity-100'
             }`}
           >

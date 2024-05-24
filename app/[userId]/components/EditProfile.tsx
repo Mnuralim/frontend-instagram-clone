@@ -83,7 +83,7 @@ const EditProfile = () => {
       <div className="absolute right-4 top-4 hidden md:block">
         <AiOutlineClose onClick={() => router.back()} size="23" color="#fff" className="cursor-pointer" />
       </div>
-      <div className="w-full h-full z-10 bg-black md:rounded-xl md:max-w-[35%] md:max-h-[80%] md:bg-[#262626]">
+      <div className="w-full h-full md:h-auto aspect-[4/3] z-10 bg-black md:rounded-xl md:max-w-[55%] lg:max-w-[30%] md:bg-[#262626]">
         <form onSubmit={handleSubmit} className="px-3">
           <div className="flex justify-between items-center pt-4 px-3">
             <div className="w-5">
@@ -135,7 +135,7 @@ const EditProfile = () => {
               </label>
             </div>
           </div>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 pb-7">
             <label htmlFor="name">
               <p className="text-xs text-[#A8A8A8]">Name</p>
               <div>
