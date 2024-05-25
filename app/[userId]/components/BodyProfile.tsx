@@ -21,7 +21,6 @@ const BodyProfile = ({ user, userSessionId, handleFollowUser }: Props) => {
   const handleCloseModal = () => {
     setShowOptions(false)
   }
-  console.log(user.following)
 
   return (
     <div>

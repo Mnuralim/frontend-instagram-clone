@@ -40,24 +40,30 @@ const SideBar = () => {
         pathName !== '/login' && pathName !== '/register' ? 'md:block' : 'md:hidden'
       }`}
     >
-      <Logo
-        className={`mt-8 mx-3 white-logo md:hidden lg:block transform transition-all ease-in-out duration-500 ${
-          searchTab ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
-        }`}
-      />
-      <BsInstagram
-        size="28"
-        className={`mt-12 mx-5 text-white md:block lg:hidden transform transition-all ease-in-out duration-500 ${
-          searchTab ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
-        }`}
-      />
+      <Link href={'/'}>
+        <Logo
+          className={`mt-8 mx-3 white-logo md:hidden lg:block transform transition-all ease-in-out duration-500 ${
+            searchTab ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
+          }`}
+        />
+      </Link>
+      <Link href={'/'}>
+        <BsInstagram
+          size="28"
+          className={`mt-12 mx-5 text-white md:block lg:hidden transform transition-all ease-in-out duration-500 ${
+            searchTab ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
+          }`}
+        />
+      </Link>
 
-      <BsInstagram
-        size="28"
-        className={`mx-6 -mt-7 white-logo transform transition-all ease-in-out duration-700 ${
-          !searchTab ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
-        }`}
-      />
+      <Link href={'/'}>
+        <BsInstagram
+          size="28"
+          className={`mx-6 -mt-7 white-logo transform transition-all ease-in-out duration-700 ${
+            !searchTab ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
+          }`}
+        />
+      </Link>
       <div className="px-3 flex flex-col gap-4 mt-10">
         <Link aria-label="link" href={'/'} prefetch={false} scroll={false} className={sideBarClassName}>
           {pathName == '/' ? (

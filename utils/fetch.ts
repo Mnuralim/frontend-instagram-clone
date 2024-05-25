@@ -2,9 +2,9 @@ export const loginCredentials = async ({
   credential,
 }: {
   credential: {
-    email: string;
-    password: string;
-  };
+    email: string
+    password: string
+  }
 }) => {
   try {
     const response = await fetch(`${process.env.API_URL}/auths/login`, {
@@ -16,21 +16,21 @@ export const loginCredentials = async ({
         email: credential.email,
         password: credential.password,
       }),
-    });
-    return response;
+    })
+    return response
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export const loginOauth = async ({
   credential,
 }: {
   credential: {
-    email: string;
-    imageProfile: string;
-    fullName: string;
-  };
+    email: string
+    imageProfile: string
+    fullName: string
+  }
 }) => {
   try {
     const response = await fetch(`${process.env.API_URL}/auths/login-google`, {
@@ -43,21 +43,21 @@ export const loginOauth = async ({
         fullName: credential.fullName,
         imageProfile: credential.imageProfile,
       }),
-    });
-    return response;
+    })
+    return response
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export const getUserByEmail = async (email: string) => {
   try {
-    const response = await fetch(`${process.env.API_URL}/users/email/${email}`);
-    return response;
+    const response = await fetch(`${process.env.API_URL}/users/email/${email}`)
+    return response
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export const register = async (email: string, password: string, username: string) => {
   try {
@@ -71,12 +71,12 @@ export const register = async (email: string, password: string, username: string
         username,
         password,
       }),
-    });
-    return response;
+    })
+    return response
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export const updateUser = async (token: string, formData: FormData) => {
   try {
@@ -86,12 +86,12 @@ export const updateUser = async (token: string, formData: FormData) => {
         Authorization: `Bearer ${token}`,
       },
       body: formData,
-    });
-    return response;
+    })
+    return response
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export const getAllUsers = async (token: string) => {
   try {
@@ -99,12 +99,12 @@ export const getAllUsers = async (token: string) => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    });
-    return response;
+    })
+    return response
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export const likePost = async (token: string, id: string) => {
   try {
@@ -114,12 +114,12 @@ export const likePost = async (token: string, id: string) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-    });
-    return response;
+    })
+    return response
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export const followUser = async (token: string, id: string) => {
   try {
@@ -129,12 +129,12 @@ export const followUser = async (token: string, id: string) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-    });
-    return response;
+    })
+    return response
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export const addToHistory = async (token: string, id: string) => {
   try {
@@ -143,12 +143,12 @@ export const addToHistory = async (token: string, id: string) => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    });
-    return response;
+    })
+    return response
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export const deleteHistory = async (token: string, id: string) => {
   try {
@@ -157,12 +157,12 @@ export const deleteHistory = async (token: string, id: string) => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    });
-    return response;
+    })
+    return response
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export const clearHistory = async (token: string) => {
   try {
@@ -171,12 +171,12 @@ export const clearHistory = async (token: string) => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    });
-    return response;
+    })
+    return response
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export const addComment = async (token: string, postId: string, text: string) => {
   try {
@@ -189,12 +189,12 @@ export const addComment = async (token: string, postId: string, text: string) =>
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-    });
-    return response;
+    })
+    return response
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export const replyComment = async (token: string, commentId: string, text: string) => {
   try {
@@ -207,12 +207,12 @@ export const replyComment = async (token: string, commentId: string, text: strin
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-    });
-    return response;
+    })
+    return response
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export const createPost = async (token: string, formData: FormData) => {
   try {
@@ -222,9 +222,23 @@ export const createPost = async (token: string, formData: FormData) => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    });
-    return response;
+    })
+    return response
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
+
+export const deletePost = async (token: string, id: string) => {
+  try {
+    const response = await fetch(`${process.env.API_URL}/posts/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    return response
+  } catch (error) {
+    console.log(error)
+  }
+}

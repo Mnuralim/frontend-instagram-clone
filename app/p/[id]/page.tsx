@@ -10,7 +10,7 @@ interface Params {
 
 const Page = ({ params }: Params) => {
   return (
-    <section className="w-full md:max-w-[90%] lg:max-w-[67%] mx-auto">
+    <section className="w-full md:max-w-[90%] lg:max-w-[67%] mx-auto pb-20">
       <Header />
       <Post params={params} />
     </section>
