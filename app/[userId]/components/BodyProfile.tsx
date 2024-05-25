@@ -1,10 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import { AiOutlineLink } from 'react-icons/ai'
 import { HiOutlineUserAdd } from 'react-icons/hi'
 import StoryProfile from './StoryProfile'
 import TabPost from './TabPost'
+import { IoSettingsSharp } from 'react-icons/io5'
+import ModalOptions from './ModalOptions'
 
 interface Props {
   user: IUser
@@ -13,7 +15,13 @@ interface Props {
 }
 
 const BodyProfile = ({ user, userSessionId, handleFollowUser }: Props) => {
+  const [showOptions, setShowOptions] = useState<boolean>(false)
   const isMyProfile = user?._id === userSessionId
+
+  const handleCloseModal = () => {
+    setShowOptions(false)
+  }
+  console.log(user.following)
 
   return (
     <div>
@@ -46,6 +54,9 @@ const BodyProfile = ({ user, userSessionId, handleFollowUser }: Props) => {
                 className="bg-[#262626] py-1 w-28  text-center rounded-lg font-semibold hover:bg-[#151515]"
               >
                 Share profile
+              </button>
+              <button onClick={() => setShowOptions(true)}>
+                <IoSettingsSharp size={24} />
               </button>
             </div>
           ) : (
@@ -162,6 +173,7 @@ const BodyProfile = ({ user, userSessionId, handleFollowUser }: Props) => {
       )}
       <StoryProfile />
       <TabPost user={user} />
+      <ModalOptions isOpen={showOptions} onClose={handleCloseModal} />
     </div>
   )
 }
